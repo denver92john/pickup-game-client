@@ -1,0 +1,25 @@
+.navbar {
+    height: 50px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    width: 30px;
+}
+
+.nav-links {
+    list-style-type: none;
+    margin-right: 10px;
+}
+
+.nav-links li {
+    display: inline-block;
+    margin-left: 15px;
+}
