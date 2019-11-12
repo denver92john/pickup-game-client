@@ -1,0 +1,27 @@
+form {
+    text-align: left;
+    width: 90%;
+    margin: auto;
+    padding: 30px 0 30px 20px;
+}
+
+input {
+    width: 100%;
+    max-width: 300px;
+}
+
+label {
+    display: block;
+}
+
+.form-section {
+    margin-bottom: 35px;
+}
+
+.form-buttons {
+    text-align: center;
+}
+
+.form-buttons button {
+    margin: 0 20px;
+}
