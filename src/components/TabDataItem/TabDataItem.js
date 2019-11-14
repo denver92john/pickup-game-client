@@ -2,13 +2,15 @@ import React from 'react';
 import './TabDataItem.css';
 
 function TabDataItem(props) {
-    const game = props.games[0]
+    const {id, title, type, players, max_players} = props;
+    //console.log(typeof players);
+    //console.log(players[0])
     return (
-        <li className='tabdata-item'>
-            <span>{game.title} </span>
-            <span>{game.type} </span>
-            <span>{game.players.length}/{game.max_players}</span>
-        </li>
+        <>
+            <span>{title} </span>
+            <span>{type} </span>
+            <span>{max_players}</span>
+        </>
     );
 }
 

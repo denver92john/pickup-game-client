@@ -17,6 +17,13 @@ function Nav() {
             <ul className="nav-links">
                 <li>
                     <Link
+                        to='/dashboard'
+                    >
+                        Dashboard
+                    </Link>
+                </li>
+                <li>
+                    <Link
                         to='/signup'
                     >
                         Signup

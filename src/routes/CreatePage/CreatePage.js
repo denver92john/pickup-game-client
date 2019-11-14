@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import Hero from '../../components/Hero/Hero';
 import Form from '../../components/Form/Form';
+import FormOptions from '../../components/FormOptions/FormOptions';
 
 class CreatePage extends Component {
     render() {
@@ -49,6 +51,17 @@ class CreatePage extends Component {
                         <button type="reset">Reset</button>
                     </div>
                 </Form>
+
+                <FormOptions>
+                    <div>
+                        <p>Have you looked to see if an event like this already exists?</p>
+                        <Link
+                            to='/discover'
+                        >
+                            Discover
+                        </Link>
+                    </div>
+                </FormOptions>
             </div>
         );
     }

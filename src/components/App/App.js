@@ -4,10 +4,11 @@ import Nav from '../Nav/Nav';
 import LandingPage from '../../routes/LandingPage/LandingPage';
 import CreatePage from '../../routes/CreatePage/CreatePage';
 import DashboardPage from '../../routes/DashboardPage/DashboardPage';
-import DiscoveryPage from '../../routes/DiscoverPage/DiscoverPage';
+import DiscoverPage from '../../routes/DiscoverPage/DiscoverPage';
 import LoginPage from '../../routes/LoginPage/LoginPage';
 import SignupPage from '../../routes/SignupPage/SignupPage';
 import Footer from '../Footer/Footer';
+import STORE from '../../dummy_store';
 import './App.css';
 
 class App extends Component {
@@ -32,11 +33,13 @@ class App extends Component {
             />
             <Route 
               path={'/dashboard'}
+              store={STORE}
               component={DashboardPage}
             />
             <Route 
               path={'/discover'}
-              component={DiscoveryPage}
+              store={STORE}
+              component={DiscoverPage}
             />
             <Route 
               path={'/create'}

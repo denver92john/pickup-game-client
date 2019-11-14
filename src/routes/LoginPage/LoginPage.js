@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import Hero from '../../components/Hero/Hero';
 import Form from '../../components/Form/Form';
 import FormOptions from '../../components/FormOptions/FormOptions';
@@ -35,7 +36,11 @@ class LoginPage extends Component {
                     <div>
                         <span>No Account?</span>
                         {' '}
-                        <a href='#'>Sign up</a>
+                        <Link
+                            to='/signup'
+                        >
+                            Sign up
+                        </Link>
                     </div>
                 </FormOptions>
             </div>

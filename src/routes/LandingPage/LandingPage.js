@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-// import {Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import Hero from '../../components/Hero/Hero';
 import LandComponent from '../../components/LandComponent/LandComponent';
 
@@ -11,7 +11,11 @@ class LandingPage extends Component {
                     <h1>PickUp Game</h1>
                     <h2>Find Your Game</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <a className='btn' href='#'>Discover</a>
+                    <Link
+                        to='/discover'
+                    >
+                        Discover
+                    </Link>
                 </Hero>
                 <LandComponent>
                     <header>
