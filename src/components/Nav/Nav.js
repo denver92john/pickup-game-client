@@ -7,7 +7,11 @@ function Nav() {
     return (
         <nav role="navigation" className="navbar">
             <div className="logo-div">
-                <img src={logo} alt='pickup game logo' className='logo' />
+                <Link
+                    to='/'
+                >
+                    <img src={logo} alt='pickup game logo' className='logo' />
+                </Link>
             </div>
 
             <ul className="nav-links">
