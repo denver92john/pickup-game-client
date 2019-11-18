@@ -4,10 +4,10 @@ import Hero from '../../components/Hero/Hero';
 import Form from '../../components/Form/Form';
 import Events from '../../components/Events/Events';
 import Options from '../../components/Options/Options';
-import STORE from '../../dummy_store';
 
 class DiscoverPage extends Component {
     render() {
+        const {games, users} = this.props.store;
         return (
             <div>
                 <Hero>
@@ -23,7 +23,7 @@ class DiscoverPage extends Component {
                         <button type="submit">Find Events</button>
                     </div>
                 </Form>
-                <Events games={STORE.games} />
+                <Events games={games} />
                 <Options>
                     <p>Not finding the right event for you?</p>
                     <Link

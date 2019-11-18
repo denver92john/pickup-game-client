@@ -8,7 +8,7 @@ import DiscoverPage from '../../routes/DiscoverPage/DiscoverPage';
 import LoginPage from '../../routes/LoginPage/LoginPage';
 import SignupPage from '../../routes/SignupPage/SignupPage';
 import Footer from '../Footer/Footer';
-//import STORE from '../../dummy_store';
+import STORE from '../../dummy_store';
 import './App.css';
 
 class App extends Component {
@@ -33,11 +33,19 @@ class App extends Component {
             />
             <Route 
               path={'/dashboard'}
-              component={DashboardPage}
+              render={() => (
+                <DashboardPage 
+                  store={STORE}
+                />
+              )}
             />
             <Route 
               path={'/discover'}
-              component={DiscoverPage}
+              render={() => (
+                <DiscoverPage 
+                  store={STORE}
+                />
+              )}
             />
             <Route 
               path={'/create'}

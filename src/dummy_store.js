@@ -65,7 +65,6 @@ export default {
             max_players: "8",
             host: "3",
             players: [
-                {player_id: "1"},
                 {player_id: "2"},
                 {player_id: "3"}
             ]
