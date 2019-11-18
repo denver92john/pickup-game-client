@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import Hero from '../../components/Hero/Hero';
 import Form from '../../components/Form/Form';
-import FormOptions from '../../components/FormOptions/FormOptions';
+import Options from '../../components/Options/Options';
 
 class CreatePage extends Component {
     render() {
@@ -52,7 +52,7 @@ class CreatePage extends Component {
                     </div>
                 </Form>
 
-                <FormOptions>
+                <Options>
                     <div>
                         <p>Have you looked to see if an event like this already exists?</p>
                         <Link
@@ -61,7 +61,7 @@ class CreatePage extends Component {
                             Discover
                         </Link>
                     </div>
-                </FormOptions>
+                </Options>
             </div>
         );
     }

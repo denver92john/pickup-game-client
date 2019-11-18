@@ -1,7 +1,7 @@
 import React from 'react';
-import './TabDataItem.css';
+import './Event.css';
 
-function TabDataItem(props) {
+function Event(props) {
     const {id, title, type, players, max_players} = props;
     //console.log(typeof players);
     //console.log(players[0])
@@ -14,4 +14,4 @@ function TabDataItem(props) {
     );
 }
 
-export default TabDataItem;
+export default Event;

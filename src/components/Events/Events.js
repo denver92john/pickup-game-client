@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import TabDataItem from '../TabDataItem/TabDataItem';
-import './TabData.css';
+import Event from '../Event/Event';
+import './Events.css';
 
-class TabData extends Component {
+class Events extends Component {
     render() {
         const {games} = this.props;
         return (
@@ -10,7 +10,7 @@ class TabData extends Component {
                 <ul className='tabdata-list'>
                     {games.map(game => (
                         <li key={game.game_id} className='tabdata-item'>
-                            <TabDataItem 
+                            <Event 
                                 id={game.game_id}
                                 title={game.title}
                                 type={game.type}
@@ -26,4 +26,4 @@ class TabData extends Component {
     }
 }
 
-export default TabData;
+export default Events;

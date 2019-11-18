@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import Hero from '../../components/Hero/Hero';
 import Form from '../../components/Form/Form';
-import FormOptions from '../../components/FormOptions/FormOptions';
+import Options from '../../components/Options/Options';
 
 class SignupPage extends Component {
     render() {
@@ -48,7 +48,7 @@ class SignupPage extends Component {
                     </div>
                 </Form>
                 
-                <FormOptions>
+                <Options>
                     <span>Already have an account?</span>
                     {' '}
                     <Link
@@ -56,7 +56,7 @@ class SignupPage extends Component {
 					>
 						Login
 					</Link>
-                </FormOptions>
+                </Options>
             </div>
         );
     }

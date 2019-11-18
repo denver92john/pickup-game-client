@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import Tab from '../Tab/Tab';
-import './TabIndex.css';
+import './Tabs.css';
 
-class TabIndex extends Component {
+class Tabs extends Component {
     render() {
         return (
             <ul className='tabindex-list'>
@@ -13,4 +13,4 @@ class TabIndex extends Component {
     }
 }
 
-export default TabIndex;
+export default Tabs;

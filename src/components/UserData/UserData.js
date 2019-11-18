@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import TabIndex from '../TabIndex/TabIndex';
-import TabData from '../TabData/TabData';
+import Tabs from '../Tabs/Tabs';
+import Events from '../Events/Events';
 import './UserData.css';
 
 /*function UserData(props) {
@@ -15,8 +15,8 @@ class UserData extends Component {
     render() {
         return (
             <section>
-                <TabIndex />
-                <TabData games={this.props.games} />
+                <Tabs />
+                <Events games={this.props.games} />
             </section>
         );
     }

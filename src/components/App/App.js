@@ -8,7 +8,7 @@ import DiscoverPage from '../../routes/DiscoverPage/DiscoverPage';
 import LoginPage from '../../routes/LoginPage/LoginPage';
 import SignupPage from '../../routes/SignupPage/SignupPage';
 import Footer from '../Footer/Footer';
-import STORE from '../../dummy_store';
+//import STORE from '../../dummy_store';
 import './App.css';
 
 class App extends Component {
@@ -33,12 +33,10 @@ class App extends Component {
             />
             <Route 
               path={'/dashboard'}
-              store={STORE}
               component={DashboardPage}
             />
             <Route 
               path={'/discover'}
-              store={STORE}
               component={DiscoverPage}
             />
             <Route 

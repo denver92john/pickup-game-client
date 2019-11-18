@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import Hero from '../../components/Hero/Hero';
 import Form from '../../components/Form/Form';
-import TabData from '../../components/TabData/TabData';
-import FormOptions from '../../components/FormOptions/FormOptions';
+import Events from '../../components/Events/Events';
+import Options from '../../components/Options/Options';
 import STORE from '../../dummy_store';
 
 class DiscoverPage extends Component {
@@ -23,15 +23,15 @@ class DiscoverPage extends Component {
                         <button type="submit">Find Events</button>
                     </div>
                 </Form>
-                <TabData games={STORE.games} />
-                <FormOptions>
+                <Events games={STORE.games} />
+                <Options>
                     <p>Not finding the right event for you?</p>
                     <Link
                         to='/create'
                     >
                         Create an Event
                     </Link>
-                </FormOptions>
+                </Options>
             </div>
         );
     }

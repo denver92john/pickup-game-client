@@ -1,6 +1,6 @@
 import React from 'react';
 
-function FormOptions(props) {
+function Options(props) {
     return (
         <section>
             {props.children}
@@ -8,4 +8,4 @@ function FormOptions(props) {
     );
 }
 
-export default FormOptions;
+export default Options;
