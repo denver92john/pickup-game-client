@@ -6,7 +6,7 @@ function UserProfile(props) {
         <section>
             <h2>{props.user.username}</h2>
             <h3>{props.user.first_name} {props.user.last_name}</h3>
-            <a className='btn' href='#'>Edit Profile</a>
+            <span className='btn'>Edit Profile</span>
         </section>
     );
 }

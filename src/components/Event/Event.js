@@ -2,7 +2,7 @@ import React from 'react';
 import './Event.css';
 
 function Event(props) {
-    const {id, title, type, players, max_players} = props;
+    const {title, type, players, max_players} = props;
     return (
         <div className='event-item'>
             <h4 className='event-item-title'>

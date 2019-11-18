@@ -31,7 +31,7 @@ class LoginPage extends Component {
                     <div>
                         <span>Forgot your Password?</span>
                         {' '}
-                        <a href='#'>Reset Password</a>
+                        <span>Reset Password</span>
                     </div>
                     <div>
                         <span>No Account?</span>
