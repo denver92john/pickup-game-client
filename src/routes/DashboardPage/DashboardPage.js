@@ -6,13 +6,14 @@ import UserData from '../../components/UserData/UserData';
 class DashboardPage extends Component {
     render() {
         const {games, users} = this.props.store;
+        const loggedInUser = users[0]
         return (
             <div>
                 <Hero>
                     <h1>User Dashboard</h1>
                 </Hero>
-                <UserProfile user={users[0]} />
-                <UserData games={games} />
+                <UserProfile user={loggedInUser} />
+                <UserData user={loggedInUser} games={games} />
             </div>
         );
     }

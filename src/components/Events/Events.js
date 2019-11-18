@@ -6,10 +6,10 @@ class Events extends Component {
     render() {
         const {games} = this.props;
         return (
-            <div className='tabdata'>
-                <ul className='tabdata-list'>
+            <div className='events'>
+                <ul className='events-list'>
                     {games.map(game => (
-                        <li key={game.game_id} className='tabdata-item'>
+                        <li key={game.game_id} className='event-item'>
                             <Event 
                                 id={game.game_id}
                                 title={game.title}

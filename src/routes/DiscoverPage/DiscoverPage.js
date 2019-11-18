@@ -7,7 +7,7 @@ import Options from '../../components/Options/Options';
 
 class DiscoverPage extends Component {
     render() {
-        const {games, users} = this.props.store;
+        const {games} = this.props.store;
         return (
             <div>
                 <Hero>
