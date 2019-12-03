@@ -8,51 +8,81 @@ import DiscoverPage from '../../routes/DiscoverPage/DiscoverPage';
 import LoginPage from '../../routes/LoginPage/LoginPage';
 import SignupPage from '../../routes/SignupPage/SignupPage';
 import Footer from '../Footer/Footer';
-import STORE from '../../dummy_store';
+import config from '../../config';
 import './App.css';
+import EventsContext from '../../contexts/EventsContext';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      events: [],
+      error: null,
+    }
+  }
+
+  setEvents = events => {
+    this.setState({
+      events,
+      error: null,
+    })
+  }
+
+  componentDidMount() {
+    fetch(`${config.API_ENDPOINT}/event`)
+      .then(res => {
+        if (!res) {
+          return res.json().then(error => Promise.reject(error))
+        }
+        return res.json()
+      })
+      .then(this.setEvents)
+      .catch(error => {
+        console.error(error)
+        this.setState({error})
+      })
+  }
+
   render() {
+    const contextValue = {
+      events: this.state.events,
+    }
+
     return (
       <div className="App">
         <Nav />
-        <main className="App_main">
-          <Switch>
-            <Route 
-              exact
-              path={'/'}
-              component={LandingPage}
-            />
-            <Route 
-              path={'/signup'}
-              component={SignupPage}
-            />
-            <Route 
-              path={'/login'}
-              component={LoginPage}
-            />
-            <Route 
-              path={'/dashboard'}
-              render={() => (
-                <DashboardPage 
-                  store={STORE}
-                />
-              )}
-            />
-            <Route 
-              path={'/discover'}
-              render={() => (
-                <DiscoverPage 
-                  store={STORE}
-                />
-              )}
-            />
-            <Route 
-              path={'/create'}
-              component={CreatePage}
-            />
-          </Switch>
-        </main>
+        <EventsContext.Provider value={contextValue}>
+          <main className="App_main">
+            <Switch>
+              <Route 
+                exact
+                path={'/'}
+                component={LandingPage}
+              />
+              <Route 
+                path={'/signup'}
+                component={SignupPage}
+              />
+              <Route 
+                path={'/login'}
+                component={LoginPage}
+              />
+              <Route 
+                path={'/dashboard'}
+                component={DashboardPage}
+              />
+              <Route 
+                path={'/discover'}
+                component={DiscoverPage}
+              />
+              <Route 
+                path={'/create'}
+                component={CreatePage}
+              />
+            </Switch>
+          </main>
+        </EventsContext.Provider>
+
         <Footer />
       </div>
     );
