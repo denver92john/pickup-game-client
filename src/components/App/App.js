@@ -28,6 +28,12 @@ class App extends Component {
     })
   }
 
+  handleAddEvent = event => {
+    this.setState({
+      events: [...this.state.events, event]
+    })
+  }
+
   componentDidMount() {
     fetch(`${config.API_ENDPOINT}/event`)
       .then(res => {
@@ -46,6 +52,7 @@ class App extends Component {
   render() {
     const contextValue = {
       events: this.state.events,
+      addEvent: this.handleAddEvent,
     }
 
     return (

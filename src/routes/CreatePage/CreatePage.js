@@ -1,15 +1,20 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import DateTimePicker from 'react-datetime-picker';
-import moment from 'moment';
+//import moment from 'moment';
+import EventsContext from '../../contexts/EventsContext';
 import Hero from '../../components/Hero/Hero';
 import Form from '../../components/Form/Form';
 import Options from '../../components/Options/Options';
+import config from '../../config';
 
 class CreatePage extends Component {
     state = {
-        date: moment().format("YYYY-MM-DD HH:mm:ssZ")
+        //date: moment().format("YYYY-MM-DD HH:mm:ssZ")
+        date: new Date()
     }
+
+    static contextType = EventsContext;
 
     onChange = date => {
         this.setState({date})
@@ -22,13 +27,33 @@ class CreatePage extends Component {
             description: e.target['description'].value,
             sport: e.target['sport'].value,
             datetime: e.target['datetime'].value,
-            max_players: e.target['max_players'].value
+            max_players: e.target['max_players'].value,
+            host_id: 1
         }
-        console.log(newEvent);
+        //console.log(newEvent);
+        fetch(`${config.API_ENDPOINT}/event`, {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(newEvent),
+        })
+            .then(res => {
+                if(!res) {
+                    return res.json().then(error => Promise.reject(error))
+                }
+                return res.json()
+            })
+            .then(event => {
+                this.context.addEvent(event);
+            })
+            .catch(error => {
+                console.error(error)
+            })
     }
 
     render() {
-        console.log(this.state.date);
+        //console.log(this.state.date);
         return (
             <div className="CreateEvent">
                 <Hero>
