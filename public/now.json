@@ -1,5 +1,6 @@
 {
     "version": 2,
+    "alias": "adkins-pickup-game",
     "name": "pickup-game",
     "routes": [
         {
