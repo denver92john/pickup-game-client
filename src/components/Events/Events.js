@@ -1,25 +1,26 @@
 import React, {Component} from 'react';
+import EventsContext from '../../contexts/EventsContext';
 import Event from '../Event/Event';
 import './Events.css';
 
 class Events extends Component {
+    static defaultProps = {
+        events: [],
+    }
+
+    static contextType = EventsContext;
+
     render() {
-        const {games} = this.props;
+        const {events} = this.context;
         return (
             <div className='events'>
                 <ul className='events-list'>
-                    {games.map(game => (
-                        <li key={game.game_id} className='event-item'>
-                            <Event 
-                                id={game.game_id}
-                                title={game.title}
-                                type={game.type}
-                                players={game.players}
-                                max_players={game.max_players}
-                            />
-                        </li>
-                    ))}
-                    
+                    {events.map(event =>
+                        <Event 
+                            key={event.id}
+                            {...event}
+                        />
+                    )}
                 </ul>
             </div>
         );

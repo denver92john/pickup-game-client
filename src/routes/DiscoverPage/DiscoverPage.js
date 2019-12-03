@@ -1,13 +1,20 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+//import EventsContext from '../../contexts/EventsContext';
 import Hero from '../../components/Hero/Hero';
 import Form from '../../components/Form/Form';
 import Events from '../../components/Events/Events';
 import Options from '../../components/Options/Options';
 
 class DiscoverPage extends Component {
+    /*static defaultProps = {
+        events: [],
+    }*/
+
+    //static contextType = EventsContext;
+
     render() {
-        const {games} = this.props.store;
+        //const {events} = this.context;
         return (
             <div>
                 <Hero>
@@ -23,7 +30,7 @@ class DiscoverPage extends Component {
                         <button type="submit">Find Events</button>
                     </div>
                 </Form>
-                <Events games={games} />
+                <Events />
                 <Options>
                     <p>Not finding the right event for you?</p>
                     <Link
