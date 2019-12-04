@@ -30,6 +30,7 @@ class CreatePage extends Component {
             max_players: e.target['max_players'].value,
             host_id: 1
         }
+        //console.log(`this is the new event`);
         //console.log(newEvent);
         fetch(`${config.API_ENDPOINT}/event`, {
             method: "POST",
@@ -85,7 +86,7 @@ class CreatePage extends Component {
                         <DateTimePicker 
                             id="game-when-input"
                             name="datetime"
-                            //format={"MMM-dd-yyyy hh:mm:ss"}
+                            format={"MMM-dd-y hh:mm:ss"}
                             onChange={this.onChange}
                             value={this.state.date}
                         />

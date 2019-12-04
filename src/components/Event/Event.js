@@ -1,13 +1,15 @@
 import React from 'react';
-//import moment from 'moment';
+import moment from 'moment';
 import './Event.css';
 
 function Event(props) {
+    console.log(props.datetime)
+    let currentDate = moment(props.datetime).format('MMM ddd DD YYYY');
     return (
         <li className="event-item">
             <h4 className="event-item-title">{props.title}</h4>
             <p>{props.sport}</p>
-            <p>When: {props.datetime}</p>
+            <p>When: {currentDate}</p>
             <p>Number of players: {props.number_of_players}/{props.max_players}</p>
             <p>{props.description}</p>
         </li>
