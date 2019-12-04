@@ -56,42 +56,42 @@ class App extends Component {
     }
 
     return (
-      <div className="App">
-        <Nav />
-        <EventsContext.Provider value={contextValue}>
-          <main className="App_main">
-            <Switch>
-              <Route 
-                exact
-                path={'/'}
-                component={LandingPage}
-              />
-              <Route 
-                path={'/signup'}
-                component={SignupPage}
-              />
-              <Route 
-                path={'/login'}
-                component={LoginPage}
-              />
-              <Route 
-                path={'/dashboard'}
-                component={DashboardPage}
-              />
-              <Route 
-                path={'/discover'}
-                component={DiscoverPage}
-              />
-              <Route 
-                path={'/create'}
-                component={CreatePage}
-              />
-            </Switch>
-          </main>
-        </EventsContext.Provider>
+      <EventsContext.Provider value={contextValue}>
+        <div className="App">
+          <Nav />
+            <main className="App_main">
+              <Switch>
+                <Route 
+                  exact
+                  path={'/'}
+                  component={LandingPage}
+                />
+                <Route 
+                  path={'/signup'}
+                  component={SignupPage}
+                />
+                <Route 
+                  path={'/login'}
+                  component={LoginPage}
+                />
+                <Route 
+                  path={'/dashboard'}
+                  component={DashboardPage}
+                />
+                <Route 
+                  path={'/discover'}
+                  component={DiscoverPage}
+                />
+                <Route 
+                  path={'/create'}
+                  component={CreatePage}
+                />
+              </Switch>
+            </main>
 
-        <Footer />
-      </div>
+          <Footer />
+        </div>
+      </EventsContext.Provider>
     );
   }
 }

@@ -6,7 +6,6 @@ function Form(props) {
     return (
         <form
             className={["pickup-game-form", className].join(" ")}
-            action="#"
             {...otherProps}
         />
     );

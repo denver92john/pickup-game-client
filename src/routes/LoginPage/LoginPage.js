@@ -1,25 +1,55 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import TokenService from '../../services/token-service';
 import Hero from '../../components/Hero/Hero';
 import Form from '../../components/Form/Form';
 import Options from '../../components/Options/Options';
 
 class LoginPage extends Component {
+    static defaultProps = {
+        location: {},
+        history: {
+            push: () => {},
+        },
+    }
+
+    state = {error: null}
+
+    // needs work
+    handleLoginSuccess = () => {
+        const {location, history} = this.props;
+        const destination = (location.state || {}).from || '/'
+        history.push(destination)
+    }
+
+    handleLoginSubmit = ev => {
+        ev.preventDefault()
+        const {username, password} = ev.target;
+
+        console.log(username.value, password.value)
+        TokenService.saveAuthToken(
+            TokenService.makeBasicAuthToken(username.value, password.value)
+        )
+
+        username.value = '';
+        password.value = '';
+        //this.handleLoginSuccess()
+    }
     render() {
         return (
             <div>
                 <Hero>
                     <h1>Login</h1>
                 </Hero>
-                <Form>
+                <Form onSubmit={this.handleLoginSubmit}>
                     <div className="form-section">
-						<label htmlFor="user-email">*Email: </label>
-						<input type="email" id="user-email" placeholder="jdenver@myemail.com" required />
+						<label htmlFor="username-input">*Username: </label>
+						<input type="text" id="username-input" name="username" required />
 					</div>
 
 					<div className="form-section">
-						<label htmlFor="user-password">*Password: </label>
-						<input type="password" id="user-password" required />
+						<label htmlFor="password-input">*Password: </label>
+						<input type="password" id="password-input" name="password" required />
 					</div>
 
                     <div className='form-buttons'>
