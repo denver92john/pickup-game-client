@@ -7,6 +7,8 @@ import Hero from '../../components/Hero/Hero';
 import Form from '../../components/Form/Form';
 import Options from '../../components/Options/Options';
 import config from '../../config';
+import TokenService from '../../services/token-service';
+import EventApiService from '../../services/event-api-service';
 
 class CreatePage extends Component {
     state = {
@@ -20,19 +22,42 @@ class CreatePage extends Component {
         this.setState({date})
     }
 
-    handleSubmit = e => {
-        e.preventDefault();
+    handleSubmit = ev => {
+        ev.preventDefault();
+        /*const newEvent = {
+            title: ev.target['title'].value,
+            description: ev.target['description'].value,
+            sport: ev.target['sport'].value,
+            datetime: ev.target['datetime'].value,
+            max_players: ev.target['max_players'].value,
+            host_id: 1  
+        }*/
+        const {title, description, sport, datetime, max_players} = ev.target;
         const newEvent = {
-            title: e.target['title'].value,
-            description: e.target['description'].value,
-            sport: e.target['sport'].value,
-            datetime: e.target['datetime'].value,
-            max_players: e.target['max_players'].value,
+            title: title.value,
+            description: description.value,
+            sport: sport.value,
+            datetime: datetime.value,
+            max_players: max_players.value,
             host_id: 1
         }
         //console.log(`this is the new event`);
         //console.log(newEvent);
-        fetch(`${config.API_ENDPOINT}/event`, {
+        EventApiService.postEvent(newEvent)
+            .then(event => {
+                this.context.addEvent(event)
+            })
+            .catch(error => {
+                console.error(error)
+            })
+
+        title.value = '';
+        description.value = '';
+        sport.value = '';
+        datetime.value = '';
+        max_players.value = '';
+
+        /*fetch(`${config.API_ENDPOINT}/event`, {
             method: "POST",
             headers: {
                 "content-type": "application/json"
@@ -50,7 +75,7 @@ class CreatePage extends Component {
             })
             .catch(error => {
                 console.error(error)
-            })
+            })*/
     }
 
     render() {

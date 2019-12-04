@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Route, Switch} from 'react-router-dom';
+import EventApiService from '../../services/event-api-service';
 import Nav from '../Nav/Nav';
 import LandingPage from '../../routes/LandingPage/LandingPage';
 import CreatePage from '../../routes/CreatePage/CreatePage';
@@ -8,7 +9,7 @@ import DiscoverPage from '../../routes/DiscoverPage/DiscoverPage';
 import LoginPage from '../../routes/LoginPage/LoginPage';
 import SignupPage from '../../routes/SignupPage/SignupPage';
 import Footer from '../Footer/Footer';
-import config from '../../config';
+//import config from '../../config';
 import './App.css';
 import EventsContext from '../../contexts/EventsContext';
 
@@ -35,7 +36,15 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch(`${config.API_ENDPOINT}/event`)
+    EventApiService.getEvents()
+      .then(this.setEvents)
+      .catch(error => {
+        console.error(error)
+        this.setState({error})
+      })
+
+
+    /*fetch(`${config.API_ENDPOINT}/event`)
       .then(res => {
         if (!res) {
           return res.json().then(error => Promise.reject(error))
@@ -46,7 +55,7 @@ class App extends Component {
       .catch(error => {
         console.error(error)
         this.setState({error})
-      })
+      })*/
   }
 
   render() {
