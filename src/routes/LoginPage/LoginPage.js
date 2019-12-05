@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import TokenService from '../../services/token-service';
+import AuthApiService from '../../services/auth-api-service';
 import Hero from '../../components/Hero/Hero';
 import Form from '../../components/Form/Form';
 import Options from '../../components/Options/Options';
@@ -22,7 +23,7 @@ class LoginPage extends Component {
         history.push(destination)
     }
 
-    handleLoginSubmit = ev => {
+    /*handleLoginSubmit = ev => {
         ev.preventDefault()
         const {username, password} = ev.target;
 
@@ -33,15 +34,33 @@ class LoginPage extends Component {
 
         username.value = '';
         password.value = '';
-        //this.handleLoginSuccess()
+        this.handleLoginSuccess()
+    }*/
+
+    handleSubmitJwtAuth = ev => {
+        ev.preventDefault()
+        this.setState({error: null})
+        const {username, password} = ev.target;
+
+        AuthApiService.postLogin({
+            username: username.value,
+            password: password.value
+        })
+            .then(res => {
+                username.value = ''
+                password.value = ''
+                TokenService.saveAuthToken(res.authToken)
+                //this.handleLoginSuccess()
+            })
     }
+
     render() {
         return (
             <div>
                 <Hero>
                     <h1>Login</h1>
                 </Hero>
-                <Form onSubmit={this.handleLoginSubmit}>
+                <Form onSubmit={this.handleSubmitJwtAuth}>
                     <div className="form-section">
 						<label htmlFor="username-input">*Username: </label>
 						<input type="text" id="username-input" name="username" required />
