@@ -3,7 +3,7 @@ import moment from 'moment';
 import './Event.css';
 
 function Event(props) {
-    console.log(props.datetime)
+    //console.log(props.datetime)
     let currentDate = moment(props.datetime).format('MMM ddd DD YYYY');
     return (
         <li className="event-item">

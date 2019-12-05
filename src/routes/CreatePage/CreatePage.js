@@ -39,7 +39,7 @@ class CreatePage extends Component {
             sport: sport.value,
             datetime: datetime.value,
             max_players: max_players.value,
-            host_id: 1
+            //host_id: 1
         }
         //console.log(`this is the new event`);
         //console.log(newEvent);

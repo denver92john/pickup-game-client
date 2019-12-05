@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import {Route, Switch} from 'react-router-dom';
 import EventApiService from '../../services/event-api-service';
+import EventsContext from '../../contexts/EventsContext';
+import PrivateRoute from '../Utils/PrivateRoute';
+import PublicOnlyRoute from '../Utils/PublicOnlyRoute';
 import Nav from '../Nav/Nav';
 import LandingPage from '../../routes/LandingPage/LandingPage';
 import CreatePage from '../../routes/CreatePage/CreatePage';
@@ -11,7 +14,7 @@ import SignupPage from '../../routes/SignupPage/SignupPage';
 import Footer from '../Footer/Footer';
 //import config from '../../config';
 import './App.css';
-import EventsContext from '../../contexts/EventsContext';
+
 
 class App extends Component {
   constructor(props) {
@@ -75,23 +78,23 @@ class App extends Component {
                   path={'/'}
                   component={LandingPage}
                 />
-                <Route 
+                <PublicOnlyRoute 
                   path={'/signup'}
                   component={SignupPage}
                 />
-                <Route 
+                <PublicOnlyRoute 
                   path={'/login'}
                   component={LoginPage}
                 />
-                <Route 
+                <PrivateRoute 
                   path={'/dashboard'}
                   component={DashboardPage}
                 />
-                <Route 
+                <PrivateRoute 
                   path={'/discover'}
                   component={DiscoverPage}
                 />
-                <Route 
+                <PrivateRoute 
                   path={'/create'}
                   component={CreatePage}
                 />
