@@ -77,8 +77,8 @@ export default class Nav extends Component {
                     </Link>
                 </div>
                 {TokenService.hasAuthToken()
-                    ? this.renderLoggedOutLinks()
-                    : this.renderLoggedInLinks()}
+                    ? this.renderLoggedInLinks()
+                    : this.renderLoggedOutLinks()}
             </nav>
         );
     }

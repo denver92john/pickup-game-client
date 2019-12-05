@@ -6,8 +6,6 @@ import EventsContext from '../../contexts/EventsContext';
 import Hero from '../../components/Hero/Hero';
 import Form from '../../components/Form/Form';
 import Options from '../../components/Options/Options';
-import config from '../../config';
-import TokenService from '../../services/token-service';
 import EventApiService from '../../services/event-api-service';
 
 class CreatePage extends Component {
@@ -24,14 +22,6 @@ class CreatePage extends Component {
 
     handleSubmit = ev => {
         ev.preventDefault();
-        /*const newEvent = {
-            title: ev.target['title'].value,
-            description: ev.target['description'].value,
-            sport: ev.target['sport'].value,
-            datetime: ev.target['datetime'].value,
-            max_players: ev.target['max_players'].value,
-            host_id: 1  
-        }*/
         const {title, description, sport, datetime, max_players} = ev.target;
         const newEvent = {
             title: title.value,
@@ -39,10 +29,8 @@ class CreatePage extends Component {
             sport: sport.value,
             datetime: datetime.value,
             max_players: max_players.value,
-            //host_id: 1
         }
-        //console.log(`this is the new event`);
-        //console.log(newEvent);
+
         EventApiService.postEvent(newEvent)
             .then(event => {
                 this.context.addEvent(event)
@@ -56,30 +44,9 @@ class CreatePage extends Component {
         sport.value = '';
         datetime.value = '';
         max_players.value = '';
-
-        /*fetch(`${config.API_ENDPOINT}/event`, {
-            method: "POST",
-            headers: {
-                "content-type": "application/json"
-            },
-            body: JSON.stringify(newEvent),
-        })
-            .then(res => {
-                if(!res) {
-                    return res.json().then(error => Promise.reject(error))
-                }
-                return res.json()
-            })
-            .then(event => {
-                this.context.addEvent(event);
-            })
-            .catch(error => {
-                console.error(error)
-            })*/
     }
 
     render() {
-        //console.log(this.state.date);
         return (
             <div className="CreateEvent">
                 <Hero>
