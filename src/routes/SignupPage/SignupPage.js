@@ -1,45 +1,72 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import AuthApiService from '../../services/auth-api-service';
 import Hero from '../../components/Hero/Hero';
 import Form from '../../components/Form/Form';
 import Options from '../../components/Options/Options';
 
 class SignupPage extends Component {
+	static defaultProps = {
+		history: {
+			push: () => {}
+		}
+	}
+
+	state = {error: null}
+
+	handleRegistrationSuccess = user => {
+		const {history} = this.props
+		history.push('/login')
+	}
+
+	handleSubmit = ev => {
+		ev.preventDefault()
+		const {username, password, first_name, last_name} = ev.target;
+		const newUser = {
+			username: username.value,
+			password: password.value,
+			first_name: first_name.value,
+			last_name: last_name.value,
+		}
+		this.setState({error: null})
+		AuthApiService.postUser(newUser)
+			.then(user => {
+				username.value = ''
+				password.value = ''
+				first_name.value = ''
+				last_name.value = ''
+				this.handleRegistrationSuccess()
+			})
+			.catch(res => {
+				this.setState({error: res.error})
+			})
+	}
+
     render() {
         return (
             <div>
                 <Hero>
                     <h1>Signup</h1>
                 </Hero>
-                <Form>
-                    <div className="form-section">
-						<label htmlFor="user-email">*Email: </label>
-						<input type="email" id="user-email" placeholder="jdenver@myemail.com" required />
+                <Form onSubmit={this.handleSubmit}>
+					<div className="form-section">
+						<label htmlFor="username-input">*User Name: </label>
+						<input type="text" id="username-input" name="username" placeholder="JDenver" required />
 					</div>
 
 					<div className="form-section">
-						<label htmlFor="user-password">*Password: </label>
-						<input type="password" id="user-password" required />
+						<label htmlFor="password-input">*Password: </label>
+						<input type="password" id="password-input" name="password" required />
 					</div>
 
 					<div className="form-section">
-						<label htmlFor="username">*User Name: </label>
-						<input type="text" id="username" placeholder="JDenver" required />
+						<label htmlFor="first-name-input">First Name: </label>
+						<input type="text" id="first-name-input" name="first_name" />
 					</div>
 
 					<div className="form-section">
-						<label htmlFor="first-name">First Name: </label>
-						<input type="text" id="first-name" />
-					</div>
-
-					<div className="form-section">
-						<label htmlFor="last-name">Last Name: </label>
-						<input type="text" id="last-name" />
-					</div>
-
-					<div className="form-section">
-						<label htmlFor="age">*Age: </label>
-						<input type="number" id="age" value="20" required />
+						<label htmlFor="last-name-input">Last Name: </label>
+						<input type="text" id="last-name-input" name="last_name" />
 					</div>
 					
                     <div className='form-buttons'>
