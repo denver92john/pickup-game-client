@@ -6,7 +6,7 @@ import EventsContext from '../../contexts/EventsContext';
 import Hero from '../../components/Hero/Hero';
 import Form from '../../components/Form/Form';
 import Options from '../../components/Options/Options';
-import config from '../../config';
+import EventApiService from '../../services/event-api-service';
 
 class CreatePage extends Component {
     state = {
@@ -20,41 +20,33 @@ class CreatePage extends Component {
         this.setState({date})
     }
 
-    handleSubmit = e => {
-        e.preventDefault();
+    handleSubmit = ev => {
+        ev.preventDefault();
+        const {title, description, sport, datetime, max_players} = ev.target;
         const newEvent = {
-            title: e.target['title'].value,
-            description: e.target['description'].value,
-            sport: e.target['sport'].value,
-            datetime: e.target['datetime'].value,
-            max_players: e.target['max_players'].value,
-            host_id: 1
+            title: title.value,
+            description: description.value,
+            sport: sport.value,
+            datetime: datetime.value,
+            max_players: max_players.value,
         }
-        //console.log(`this is the new event`);
-        //console.log(newEvent);
-        fetch(`${config.API_ENDPOINT}/event`, {
-            method: "POST",
-            headers: {
-                "content-type": "application/json"
-            },
-            body: JSON.stringify(newEvent),
-        })
-            .then(res => {
-                if(!res) {
-                    return res.json().then(error => Promise.reject(error))
-                }
-                return res.json()
-            })
+
+        EventApiService.postEvent(newEvent)
             .then(event => {
-                this.context.addEvent(event);
+                this.context.addEvent(event)
             })
             .catch(error => {
                 console.error(error)
             })
+
+        title.value = '';
+        description.value = '';
+        sport.value = '';
+        datetime.value = '';
+        max_players.value = '';
     }
 
     render() {
-        //console.log(this.state.date);
         return (
             <div className="CreateEvent">
                 <Hero>

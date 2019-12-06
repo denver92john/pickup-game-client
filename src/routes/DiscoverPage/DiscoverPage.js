@@ -1,20 +1,12 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-//import EventsContext from '../../contexts/EventsContext';
 import Hero from '../../components/Hero/Hero';
 import Form from '../../components/Form/Form';
 import Events from '../../components/Events/Events';
 import Options from '../../components/Options/Options';
 
 class DiscoverPage extends Component {
-    /*static defaultProps = {
-        events: [],
-    }*/
-
-    //static contextType = EventsContext;
-
     render() {
-        //const {events} = this.context;
         return (
             <div>
                 <Hero>

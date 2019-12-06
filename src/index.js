@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter} from 'react-router-dom';
-import './index.css';
+import {EventsProvider} from './contexts/EventsContext';
 import App from './components/App/App';
+import './index.css';
 
 ReactDOM.render(
     <BrowserRouter>
-        <App />
+        <EventsProvider>
+            <App />
+        </EventsProvider>
     </BrowserRouter>, 
     document.getElementById('root')
 );
