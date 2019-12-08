@@ -28,7 +28,22 @@ const EventApiService = {
                     ? res.json().then(e => Promise.reject(e))
                     : res.json()
             )
-    }
+    },
+    play(event_id) {
+        return fetch(`${config.API_ENDPOINT}/play`, {
+            method: 'POST', 
+            headers: {
+                'content-type': 'application/json',
+                'authorization': `bearer ${TokenService.getAuthToken()}`,
+            },
+            body: JSON.stringify(event_id),
+        })
+            .then(res =>
+                (!res.ok)
+                    ? res.json().then(e => Promise.reject(e))
+                    : res.json()
+            )
+    },
 }
 
 export default EventApiService;
