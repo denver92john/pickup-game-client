@@ -4,6 +4,31 @@ import Events from '../Events/Events';
 import './UserData.css';
 
 class UserData extends Component {
+    handleUserGames = (games = []) => {
+        let userGames;
+        const {user_id} = this.props.user.id;
+        userGames = games.filter(game => {
+            
+        })
+    }
+
+    handleHostedGames = (games = []) => {
+
+    }
+
+    render() {
+        return (
+            <section>
+                <Tabs />
+                <Events />
+            </section>
+        );
+    }
+}
+
+export default UserData;
+
+/*
     findUserGames = (user_id, games=[]) => {
         let userGames = [];
         games.forEach(game => {
@@ -15,19 +40,4 @@ class UserData extends Component {
         })
         return userGames;
     }
-
-    render() {
-        const {user, games} = this.props;
-        const userGames = this.findUserGames(user.user_id, games);
-        return (
-            <section>
-                <Tabs />
-                <Events 
-                    games={userGames}
-                />
-            </section>
-        );
-    }
-}
-
-export default UserData;
+*/

@@ -8,7 +8,6 @@ import Options from '../../components/Options/Options';
 
 class LoginPage extends Component {
     static defaultProps = {
-        location: {},
         history: {
             push: () => {},
         },
@@ -18,24 +17,9 @@ class LoginPage extends Component {
 
     // needs work
     handleLoginSuccess = () => {
-        const {location, history} = this.props;
-        const destination = (location.state || {}).from || '/'
-        history.push(destination)
+        const {history} = this.props;
+        history.push('/dashboard')
     }
-
-    /*handleLoginSubmit = ev => {
-        ev.preventDefault()
-        const {username, password} = ev.target;
-
-        console.log(username.value, password.value)
-        TokenService.saveAuthToken(
-            TokenService.makeBasicAuthToken(username.value, password.value)
-        )
-
-        username.value = '';
-        password.value = '';
-        this.handleLoginSuccess()
-    }*/
 
     handleSubmitJwtAuth = ev => {
         ev.preventDefault()
@@ -50,8 +34,9 @@ class LoginPage extends Component {
                 username.value = ''
                 password.value = ''
                 TokenService.saveAuthToken(res.authToken)
-                //this.handleLoginSuccess()
+                this.handleLoginSuccess()
             })
+            .catch(error => this.setState({error}))
     }
 
     render() {
