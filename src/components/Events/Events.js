@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import EventsContext from '../../contexts/EventsContext';
 import EventApiService from '../../services/event-api-service';
-import Event from '../Event/Event';
+import EventsItem from '../EventsItem/EventsItem';
 import './Events.css';
 
 class Events extends Component {
@@ -19,9 +19,9 @@ class Events extends Component {
         return (
             <ul className='events-list'>
                 {events.map(event =>
-                    <Event 
+                    <EventsItem 
                         key={event.id}
-                        {...event}
+                        event={event}
                     />
                 )}
             </ul>
@@ -29,12 +29,13 @@ class Events extends Component {
     }
 
     render() {
-        const {error} = this.context;
+        //const {error} = this.context;
         return (
             <div className='events'>
-                {error
+                {/*error
                     ? <p>There was an error</p>
-                    : this.renderEvents()}
+                    : this.renderEvents()*/}
+                {this.renderEvents()}
             </div>
         );
     }

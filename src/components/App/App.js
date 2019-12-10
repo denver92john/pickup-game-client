@@ -7,6 +7,7 @@ import LandingPage from '../../routes/LandingPage/LandingPage';
 import CreatePage from '../../routes/CreatePage/CreatePage';
 import DashboardPage from '../../routes/DashboardPage/DashboardPage';
 import DiscoverPage from '../../routes/DiscoverPage/DiscoverPage';
+import EventPage from '../../routes/EventPage/EventPage';
 import LoginPage from '../../routes/LoginPage/LoginPage';
 import SignupPage from '../../routes/SignupPage/SignupPage';
 import Footer from '../Footer/Footer';
@@ -39,6 +40,10 @@ class App extends Component {
                 <PrivateRoute 
                   path={'/dashboard'}
                   component={DashboardPage}
+                />
+                <PrivateRoute 
+                  path={'/event/:event_id'}
+                  component={EventPage}
                 />
                 <PrivateRoute 
                   path={'/discover'}
