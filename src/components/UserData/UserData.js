@@ -1,26 +1,44 @@
 import React, {Component} from 'react';
+import UserContext from '../../contexts/UserContext';
+import UserApiService from '../../services/user-api-service';
 import Tabs from '../Tabs/Tabs';
 import Events from '../Events/Events';
 import './UserData.css';
 
 class UserData extends Component {
-    handleUserGames = (games = []) => {
-        let userGames;
-        const {user_id} = this.props.user.id;
-        userGames = games.filter(game => {
-            
-        })
+    static contextType = UserContext;
+
+    //componentDidMount() {this.handleUserGames}
+
+    handleUserGames = ev => {
+        ev.preventDefault()
+        this.context.clearError()
+        this.context.clearEvents()
+        const user_id = this.props.user.id;
+        console.log(user_id)
+        UserApiService.getUserEvents(user_id)
+            .then(this.context.setEvents)
+            .catch(this.context.setError)
     }
 
-    handleHostedGames = (games = []) => {
-
+    handleHostedGames = ev => {
+        ev.preventDefault()
+        this.context.clearError()
+        this.context.clearEvents()
+        const user_id = this.props.user.id;
+        UserApiService.getUserHostedEvents(user_id)
+            .then(this.context.setEvents)
+            .catch(this.context.setError)
     }
 
     render() {
+        console.log(this.context.events)
         return (
             <section>
                 <Tabs />
-                <Events />
+                <Events events={this.context.events}/>
+                <button type="button" onClick={this.handleUserGames}>User Games</button>
+                <button type="button" onClick={this.handleHostedGames}>Hosted Games</button>
             </section>
         );
     }

@@ -7,23 +7,23 @@ import './Events.css';
 class Events extends Component {
     static contextType = EventsContext;
 
-    componentDidMount() {
+    /*componentDidMount() {
         this.context.clearError()
         EventApiService.getEvents()
             .then(this.context.setEvents)
             .catch(this.context.setError)
-    }
+    }*/
 
     renderEvents() {
-        const {events = []} = this.context;
+        //const {events = []} = this.context;
         return (
             <ul className='events-list'>
-                {events.map(event =>
+                {/*events.map(event =>
                     <EventsItem 
                         key={event.id}
                         event={event}
                     />
-                )}
+                )*/}
             </ul>
         );
     }
