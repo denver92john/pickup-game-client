@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import Hero from '../../components/Hero/Hero';
-import LandComponent from '../../components/LandComponent/LandComponent';
+import {Hero, Section} from '../../components/Utils/Utils';
 
 class LandingPage extends Component {
     render() {
@@ -17,19 +16,19 @@ class LandingPage extends Component {
                         Discover
                     </Link>
                 </Hero>
-                <LandComponent>
+                <Section>
                     <header>
                         <h3>Finding a local pickup game</h3>
                     </header>
                     <p>Looking for people to play in local pickup games?</p>
 				    <p>PickUp Game connects you with others looking to play</p>
-                </LandComponent>
-                <LandComponent>
+                </Section>
+                <Section>
                     <header>
                         <h3>Creating a local pickup game</h3>
                     </header>
                     <p>If you start a game, others will join</p>
-                </LandComponent>
+                </Section>
             </div>
         );
     }

@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import AuthApiService from '../../services/auth-api-service';
 import Hero from '../../components/Hero/Hero';
 import Form from '../../components/Form/Form';
-import Options from '../../components/Options/Options';
+import {Section} from '../../components/Utils/Utils';
 
 class SignupPage extends Component {
 	static defaultProps = {
@@ -74,16 +74,15 @@ class SignupPage extends Component {
 					    <button type="reset">Reset</button>
                     </div>
                 </Form>
-                
-                <Options>
-                    <span>Already have an account?</span>
+                <Section>
+					<span>Already have an account?</span>
                     {' '}
                     <Link
 						to='/login'
 					>
 						Login
 					</Link>
-                </Options>
+				</Section>
             </div>
         );
     }

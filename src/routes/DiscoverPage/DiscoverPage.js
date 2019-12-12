@@ -2,10 +2,9 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import EventsContext from '../../contexts/EventsContext';
 import EventApiService from '../../services/event-api-service';
-import Hero from '../../components/Hero/Hero';
 import Form from '../../components/Form/Form';
 import Events from '../../components/Events/Events';
-import Options from '../../components/Options/Options';
+import {Hero, Section} from '../../components/Utils/Utils';
 
 class DiscoverPage extends Component {
     static contextType = EventsContext;
@@ -22,26 +21,26 @@ class DiscoverPage extends Component {
             <div>
                 <Hero>
                     <h1>Discover New Events</h1>
-                </Hero>
-                <Form>
-                    <div className="form-section">
-						<label htmlFor="game-city">City:</label>
-						<input type="text" id="game-city" placeholder="Detroit" />
-					</div>
+                    <Form>
+                        <div className="form-section">
+                            <label htmlFor="game-city">City:</label>
+                            <input type="text" id="game-city" placeholder="Detroit" />
+                        </div>
 
-                    <div className="form-buttons">
-                        <button type="submit">Find Events</button>
-                    </div>
-                </Form>
+                        <div className="form-buttons">
+                            <button type="submit">Find Events</button>
+                        </div>
+                    </Form>
+                </Hero>
                 <Events events={this.context.events} />
-                <Options>
+                <Section>
                     <p>Not finding the right event for you?</p>
                     <Link
                         to='/create'
                     >
                         Create an Event
                     </Link>
-                </Options>
+                </Section>
             </div>
         );
     }

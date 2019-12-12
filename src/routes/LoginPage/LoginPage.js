@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import TokenService from '../../services/token-service';
 import AuthApiService from '../../services/auth-api-service';
-import Hero from '../../components/Hero/Hero';
+//import Hero from '../../components/Hero/Hero';
 import Form from '../../components/Form/Form';
-import Options from '../../components/Options/Options';
+import {Hero, Section} from '../../components/Utils/Utils';
 
 class LoginPage extends Component {
     static defaultProps = {
@@ -61,7 +61,7 @@ class LoginPage extends Component {
 					    <button type="reset">Reset</button>
                     </div>
                 </Form>
-                <Options>
+                <Section>
                     <div>
                         <span>Forgot your Password?</span>
                         {' '}
@@ -76,7 +76,7 @@ class LoginPage extends Component {
                             Sign up
                         </Link>
                     </div>
-                </Options>
+                </Section>
             </div>
         );
     }

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import UserContext from '../../contexts/UserContext';
 import AuthApiService from '../../services/auth-api-service';
-import Hero from '../../components/Hero/Hero';
+import {Hero} from '../../components/Utils/Utils';
 import UserProfile from '../../components/UserProfile/UserProfile';
 import UserData from '../../components/UserData/UserData';
 

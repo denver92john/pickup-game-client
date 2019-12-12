@@ -1,9 +1,0 @@
-section {
-    min-height: 250px;
-    padding: 30px 15px;
-    background-color: #ddd;
-}
-
-section:nth-child(even) {
-    background-color: #bbb;
-}
