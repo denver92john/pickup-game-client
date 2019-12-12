@@ -20,6 +20,11 @@ class CreatePage extends Component {
         this.setState({date})
     }
 
+    handleCreateSuccess = () => {
+        const {history} = this.props;
+        history.push('/dashboard')
+    }
+
     handleSubmit = ev => {
         ev.preventDefault();
         const {title, description, sport, datetime, max_players} = ev.target;
@@ -33,17 +38,19 @@ class CreatePage extends Component {
 
         EventApiService.postEvent(newEvent)
             .then(event => {
+                title.value = '';
+                description.value = '';
+                sport.value = '';
+                datetime.value = '';
+                max_players.value = '';
                 this.context.addEvent(event)
+                this.handleCreateSuccess()
             })
             .catch(error => {
                 console.error(error)
             })
 
-        title.value = '';
-        description.value = '';
-        sport.value = '';
-        datetime.value = '';
-        max_players.value = '';
+        
     }
 
     render() {

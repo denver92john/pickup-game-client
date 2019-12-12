@@ -67,7 +67,7 @@ export default class Nav extends Component {
     }
 
     render() {
-        return (
+        return <>
             <nav role="navigation" className="navbar">
                 <div className="logo-div">
                     <Link
@@ -80,7 +80,8 @@ export default class Nav extends Component {
                     ? this.renderLoggedInLinks()
                     : this.renderLoggedOutLinks()}
             </nav>
-        );
+        </>
+        
     }
 }
 

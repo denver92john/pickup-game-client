@@ -8,14 +8,12 @@ import './UserData.css';
 class UserData extends Component {
     static contextType = UserContext;
 
-    //componentDidMount() {this.handleUserGames}
-
     handleUserGames = ev => {
         ev.preventDefault()
         this.context.clearError()
         this.context.clearEvents()
         const user_id = this.props.user.id;
-        console.log(user_id)
+        //console.log(user_id)
         UserApiService.getUserEvents(user_id)
             .then(this.context.setEvents)
             .catch(this.context.setError)
@@ -32,7 +30,8 @@ class UserData extends Component {
     }
 
     render() {
-        console.log(this.context.events)
+        //console.log('ran second')
+        //console.log(this.context.user.id)
         return (
             <section>
                 <Tabs />

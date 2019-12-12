@@ -3,14 +3,11 @@ import React, {Component} from 'react';
 const UserContext = React.createContext({
     user: {},
     events: [],
-    hosted: [],
     error: null,
     setUser: () => {},
     setEvents: () => {},
-    setHosted: () => {},
     setError: () => {},
     clearEvents: () => {},
-    clearHosted: () => {},
     clearError: () => {},
 })
 
@@ -20,7 +17,6 @@ export class UserProvider extends Component {
     state = {
         user: {},
         events: [],
-        hosted: [],
         error: null
     }
 
@@ -32,10 +28,6 @@ export class UserProvider extends Component {
         this.setState({events})
     }
 
-    setHosted = hosted => {
-        this.setState({hosted})
-    }
-
     setError = error => {
         console.error(error)
         this.setState({error})
@@ -43,10 +35,6 @@ export class UserProvider extends Component {
 
     clearEvents = () => {
         this.setState({events: []})
-    }
-
-    clearHosted = () => {
-        this.setState({hosted: null})
     }
 
     clearError = () => {
@@ -57,14 +45,11 @@ export class UserProvider extends Component {
         const contextValue = {
             user: this.state.user,
             events: this.state.events,
-            hosted: this.state.hosted,
             error: this.state.error,
             setUser: this.setUser,
             setEvents: this.setEvents,
-            setHosted: this.setHosted,
             setError: this.setError,
             clearEvents: this.clearEvents,
-            clearHosted: this.clearHosted,
             clearError: this.clearError
         }
         return (

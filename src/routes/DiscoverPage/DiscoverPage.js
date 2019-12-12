@@ -1,11 +1,22 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import EventsContext from '../../contexts/EventsContext';
+import EventApiService from '../../services/event-api-service';
 import Hero from '../../components/Hero/Hero';
 import Form from '../../components/Form/Form';
 import Events from '../../components/Events/Events';
 import Options from '../../components/Options/Options';
 
 class DiscoverPage extends Component {
+    static contextType = EventsContext;
+
+    componentDidMount() {
+        this.context.clearError()
+        EventApiService.getEvents()
+            .then(this.context.setEvents)
+            .catch(this.context.setError)
+    }
+
     render() {
         return (
             <div>
@@ -22,7 +33,7 @@ class DiscoverPage extends Component {
                         <button type="submit">Find Events</button>
                     </div>
                 </Form>
-                <Events />
+                <Events events={this.context.events} />
                 <Options>
                     <p>Not finding the right event for you?</p>
                     <Link

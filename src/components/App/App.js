@@ -21,41 +21,42 @@ class App extends Component {
   render() {
     return (
         <div className="App">
-          <Nav />
-            <main className="App_main">
-              <Switch>
-                <Route 
-                  exact
-                  path={'/'}
-                  component={LandingPage}
-                />
-                <PublicOnlyRoute 
-                  path={'/signup'}
-                  component={SignupPage}
-                />
-                <PublicOnlyRoute 
-                  path={'/login'}
-                  component={LoginPage}
-                />
-                <PrivateRoute 
-                  path={'/dashboard'}
-                  component={DashboardPage}
-                />
-                <PrivateRoute 
-                  path={'/event/:event_id'}
-                  component={EventPage}
-                />
-                <PrivateRoute 
-                  path={'/discover'}
-                  component={DiscoverPage}
-                />
-                <PrivateRoute 
-                  path={'/create'}
-                  component={CreatePage}
-                />
-              </Switch>
-            </main>
-
+          <header>
+            <Nav />
+          </header>
+          <main className="App_main">
+            <Switch>
+              <Route 
+                exact
+                path={'/'}
+                component={LandingPage}
+              />
+              <PublicOnlyRoute 
+                path={'/signup'}
+                component={SignupPage}
+              />
+              <PublicOnlyRoute 
+                path={'/login'}
+                component={LoginPage}
+              />
+              <PrivateRoute 
+                path={'/dashboard'}
+                component={DashboardPage}
+              />
+              <PrivateRoute 
+                path={'/event/:event_id'}
+                component={EventPage}
+              />
+              <PrivateRoute 
+                path={'/discover'}
+                component={DiscoverPage}
+              />
+              <PrivateRoute 
+                path={'/create'}
+                component={CreatePage}
+              />
+            </Switch>
+          </main>
           <Footer />
         </div>
     );
