@@ -14,6 +14,18 @@ const EventApiService = {
                     : res.json()
             )
     },
+    getSportsList() {
+        return fetch(`${config.API_ENDPOINT}/event/sport_list`, {
+            headers: {
+                'authorization': `bearer ${TokenService.getAuthToken()}`
+            }
+        })
+            .then(res =>
+                (!res.ok)
+                    ? res.json().then(e => Promise.reject(e))
+                    : res.json()
+            )
+    },
     getEvent(event_id) {
         return fetch(`${config.API_ENDPOINT}/event/${event_id}`, {
             headers: {

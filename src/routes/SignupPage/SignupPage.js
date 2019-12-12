@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import AuthApiService from '../../services/auth-api-service';
-import Hero from '../../components/Hero/Hero';
 import Form from '../../components/Form/Form';
-import {Section} from '../../components/Utils/Utils';
+import {Hero, Section} from '../../components/Utils/Utils';
 
 class SignupPage extends Component {
 	static defaultProps = {

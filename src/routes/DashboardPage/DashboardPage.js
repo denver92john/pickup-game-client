@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import UserContext from '../../contexts/UserContext';
-import AuthApiService from '../../services/auth-api-service';
+import UserApiService from '../../services/user-api-service';
 import {Hero} from '../../components/Utils/Utils';
-import UserProfile from '../../components/UserProfile/UserProfile';
 import UserData from '../../components/UserData/UserData';
 
 class DashboardPage extends Component {
@@ -10,19 +9,64 @@ class DashboardPage extends Component {
 
     componentDidMount() {
         this.context.clearError()
-        AuthApiService.getUser()
-            .then(this.context.setUser)
+        UserApiService.getUser()
+            .then(user => {
+                this.context.setUser(user)
+                UserApiService.getUserEvents(user.id)
+                    .then(this.context.setEvents)
+                    .catch(this.context.setError)
+            })
             .catch(this.context.setError)
     }
 
-    render() {
+    handleUserEvents = ev => {
+        ev.preventDefault()
+        this.context.clearError()
+        this.context.clearEvents()
+        const user_id = this.context.user.id;
+        //console.log(user_id)
+        UserApiService.getUserEvents(user_id)
+            .then(this.context.setEvents)
+            .catch(this.context.setError)
+    }
+
+    handleHostedEvents = ev => {
+        ev.preventDefault()
+        this.context.clearError()
+        this.context.clearEvents()
+        const user_id = this.context.user.id;
+        UserApiService.getUserHostedEvents(user_id)
+            .then(this.context.setEvents)
+            .catch(this.context.setError)
+    }
+
+    renderDash() {
+        const {user, events} = this.context
         return (
-            <div>
+            <>
                 <Hero>
                     <h1>User Dashboard</h1>
+                    <h2>{user.username}</h2>
+                    <h3>{user.first_name} {user.last_name}</h3>
                 </Hero>
-                <UserProfile user={this.context.user} />
-                <UserData user={this.context.user} />
+                <UserData 
+                    user={user} 
+                    events={events}
+                    onUserEvents={this.handleUserEvents}
+                    onHostedEvents={this.handleHostedEvents}
+                />
+            </>
+        );
+    }
+
+    render() {
+        const {error} = this.context
+        console.log('how many times')
+        return (
+            <div>
+                {error
+                    ? <p>There was an error, try again</p>
+                    : this.renderDash()}
             </div>
         );
     }

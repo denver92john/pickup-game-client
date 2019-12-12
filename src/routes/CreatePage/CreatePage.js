@@ -1,20 +1,37 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import EventApiService from '../../services/event-api-service';
+import EventsContext from '../../contexts/EventsContext';
 import DateTimePicker from 'react-datetime-picker';
 //import moment from 'moment';
-import EventsContext from '../../contexts/EventsContext';
-import Hero from '../../components/Hero/Hero';
+import {Hero, Section} from '../../components/Utils/Utils';
 import Form from '../../components/Form/Form';
-import Options from '../../components/Options/Options';
-import EventApiService from '../../services/event-api-service';
+
 
 class CreatePage extends Component {
+    static defaultProps = {
+        history: {
+            push: () => {}
+        }
+    }
+
     state = {
         //date: moment().format("YYYY-MM-DD HH:mm:ssZ")
-        date: new Date()
+        date: new Date(),
+        sports: []
     }
 
     static contextType = EventsContext;
+
+    componentDidMount() {
+        this.context.clearError()
+        EventApiService.getSportsList()
+            .then(sportList => {
+                let sports = sportList.enum_range.slice(1, -1).split(',')
+                this.setState({sports})
+            })
+            .catch(this.context.setError)
+    }
 
     onChange = date => {
         this.setState({date})
@@ -27,6 +44,7 @@ class CreatePage extends Component {
 
     handleSubmit = ev => {
         ev.preventDefault();
+        this.context.clearError()
         const {title, description, sport, datetime, max_players} = ev.target;
         const newEvent = {
             title: title.value,
@@ -37,23 +55,24 @@ class CreatePage extends Component {
         }
 
         EventApiService.postEvent(newEvent)
-            .then(event => {
+            .then(() => {
                 title.value = '';
                 description.value = '';
                 sport.value = '';
                 datetime.value = '';
                 max_players.value = '';
-                this.context.addEvent(event)
-                this.handleCreateSuccess()
+                EventApiService.getEvents()
+                    .then(events => {
+                        this.context.setEvents(events)
+                        this.handleCreateSuccess()
+                    })
+                    .catch(this.context.setError)
             })
-            .catch(error => {
-                console.error(error)
-            })
-
-        
+            .catch(this.context.setError)
     }
 
     render() {
+        const {sports} = this.state;
         return (
             <div className="CreateEvent">
                 <Hero>
@@ -74,9 +93,9 @@ class CreatePage extends Component {
 						<label htmlFor="game-type-input">*Game Type: </label>
 						<select id="game-type-input" name="sport" required>
 							<option value="">Select Sport:</option>
-							<option value="basketball">basketball</option>
-							<option value="football">football</option>
-							<option value="hockey">hockey</option>
+                            {sports.map((sport, i) => (
+                                <option key={i} value={sport}>{sport}</option>
+                            ))}
 						</select>
 					</div>
                     
@@ -85,7 +104,7 @@ class CreatePage extends Component {
                         <DateTimePicker 
                             id="game-when-input"
                             name="datetime"
-                            format={"MMM-dd-y hh:mm:ss"}
+                            format={"M/d/yy h:mma"}
                             onChange={this.onChange}
                             value={this.state.date}
                         />
@@ -102,7 +121,7 @@ class CreatePage extends Component {
                     </div>
                 </Form>
 
-                <Options>
+                <Section>
                     <div>
                         <p>Have you looked to see if an event like this already exists?</p>
                         <Link
@@ -111,7 +130,7 @@ class CreatePage extends Component {
                             Discover
                         </Link>
                     </div>
-                </Options>
+                </Section>
             </div>
         );
     }

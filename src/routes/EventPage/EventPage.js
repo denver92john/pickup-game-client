@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import moment from 'moment';
 import EventContext from '../../contexts/EventContext';
 import EventApiService from '../../services/event-api-service';
-import {checkPlayer} from '../../event-helper';
+//import {checkPlayer} from '../../event-helper';
 //import './Event.css';
 
 export default class EventPage extends Component {
@@ -53,7 +53,7 @@ export default class EventPage extends Component {
         ev.preventDefault()
         console.log('onNotPlay ran')
         this.context.clearError()
-        const {event, players} = this.context;
+        const {event} = this.context;
         EventApiService.deletePlay(event.id)
             .then(() => {
                 EventApiService.getPlayers(event.id)

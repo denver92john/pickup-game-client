@@ -1,11 +1,8 @@
 import React, {Component} from 'react';
-import EventsContext from '../../contexts/EventsContext';
 import EventsItem from '../EventsItem/EventsItem';
 import './Events.css';
 
 class Events extends Component {
-    static contextType = EventsContext;
-
     renderEvents() {
         const events = this.props.events;
         return (
