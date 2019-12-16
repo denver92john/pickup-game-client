@@ -65,29 +65,31 @@ export default class EventPage extends Component {
             .catch(this.context.setError)
     }
 
+    ifPlaying = (players = [], player_id) => {
+        let found = players.find(player => player.id === player_id)
+        console.log(found)
+        return found;
+    }
+
     renderPlayButton() {
         return (
-            <div className="event-buttons">
-                <button
-                    type="button"
-                    onClick={this.onPlay}
-                >
-                    Play
-                </button>
-            </div>
+            <button
+                type="button"
+                onClick={this.onPlay}
+            >
+                Play
+            </button>
         );
     }
 
     renderNotPlayButton() {
         return (
-            <div className="event-buttons">
-                <button
-                    type="button"
-                    onClick={this.onNotPlay}
-                >
-                    Leave Game
-                </button>
-            </div>
+            <button
+                type="button"
+                onClick={this.onNotPlay}
+            >
+                Leave Game
+            </button>
         );
     }
 
@@ -100,6 +102,7 @@ export default class EventPage extends Component {
                 <h2>{event.title}</h2>
                 <p>{event.sport}</p>
                 <p>{currentDate}</p>
+                <p>{event.description}</p>
                 <ul>
                     {players.map(player =>
                         <li key={player.id}>
@@ -114,8 +117,6 @@ export default class EventPage extends Component {
     render() {
         const {event, players} = this.context;
         let currentDate = moment(event.datetime).format('MMM ddd DD YYYY');
-        const playing = players.map(player =>
-            <li key={player.id}>{player.username}</li>)
         
         return (
             <section>
@@ -124,84 +125,16 @@ export default class EventPage extends Component {
                 <p>{currentDate}</p>
                 <p>{event.description}</p>
                 <div className="event-buttons">
-                    <button
-                        type="button"
-                        onClick={this.onPlay}
-                    >
-                        Play
-                    </button>
-                    <button
-                        type="button"
-                        onClick={this.onNotPlay}
-                    >
-                        Leave Game
-                    </button>
+                    {this.ifPlaying(players, event.player_id)
+                        ? this.renderNotPlayButton()
+                        : this.renderPlayButton()}
                 </div>
-                <ul>
-                    {/*players.map(player =>
-                        <li key={player.id}>
-                            {player.username}
-                        </li>
-                    )*/}
-                    {playing}
-                </ul>
+                <EventPlayers players={players} />
             </section>
         );
     }
-
-    /*render() {
-        const {id, datetime, description, max_players, number_of_players, sport, title} = this.props;
-        let currentDate = moment(datetime).format('MMM ddd DD YYYY');
-        return (
-            <li className="event-item">
-                <h4 className="event-item-title">{title}</h4>
-                <p>{sport}</p>
-                <p>When: {currentDate}</p>
-                <p>Number of Players: {number_of_players}/{max_players}</p>
-                <p>{description}</p>
-                {EventApiService.checkPlay(id)
-                    ? this.renderPlayButton()
-                    : this.renderNotPlayButton()}
-                <div className="event-buttons">
-                <button
-                    type="button"
-                    onClick={this.onPlay}
-                >
-                    Play
-                </button>
-                <button
-                    type="button"
-                    onClick={this.onNotPlay}
-                >
-                    Leave Game
-                </button>
-                </div>
-            </li>
-        );
-    }*/
 }
 
-/*function Event(props) {
-    //console.log(props.datetime)
-    let currentDate = moment(props.datetime).format('MMM ddd DD YYYY');
-    return (
-        <li className="event-item">
-            <h4 className="event-item-title">{props.title}</h4>
-            <p>{props.sport}</p>
-            <p>When: {currentDate}</p>
-            <p>Number of players: {props.number_of_players}/{props.max_players}</p>
-            <p>{props.description}</p>
-            <div className="event-buttons">
-                    <button
-                        type="button"
-                        onClick={props.onPlay}
-                    >
-                        Play
-                    </button>
-                </div>
-        </li>
-    );
-}
 
 function EventPlayers({players = []}) {
     return (
@@ -213,4 +146,4 @@ function EventPlayers({players = []}) {
             )}
         </ul>
     );
-}*/
+}

@@ -7,6 +7,7 @@ export const nullEvent = {
     id: null,
     max_players: null,
     number_of_players: null,
+    player_id: null,
     sport: null,
     title: null
 }
