@@ -18,7 +18,6 @@ class CreatePage extends Component {
     state = {
         //date: moment().format("YYYY-MM-DD HH:mm:ssZ")
         date: new Date(),
-        sports: []
     }
 
     static contextType = EventsContext;
@@ -28,7 +27,7 @@ class CreatePage extends Component {
         EventApiService.getSportsList()
             .then(sportList => {
                 let sports = sportList.enum_range.slice(1, -1).split(',')
-                this.setState({sports})
+                this.context.setSports(sports)
             })
             .catch(this.context.setError)
     }
@@ -72,7 +71,7 @@ class CreatePage extends Component {
     }
 
     render() {
-        const {sports} = this.state;
+        const {sports} = this.context;
         return (
             <div className="CreateEvent">
                 <Hero>

@@ -50,6 +50,18 @@ const EventApiService = {
                     : res.json()
             )
     },
+    getFilteredEvents(queryString) {
+        return fetch(`${config.API_ENDPOINT}/event/${queryString}`, {
+            headers: {
+                'authorization': `bearer ${TokenService.getAuthToken()}`
+            }
+        })
+            .then(res =>
+                (!res.ok)
+                    ? res.json().then(e => Promise.reject(e))
+                    : res.json()
+            )
+    },
     postEvent(newEvent) {
         return fetch(`${config.API_ENDPOINT}/event`, {
             method: 'POST',
