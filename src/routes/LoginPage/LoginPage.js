@@ -8,6 +8,7 @@ import {Hero, Section} from '../../components/Utils/Utils';
 
 class LoginPage extends Component {
     static defaultProps = {
+        location: {},
         history: {
             push: () => {},
         },
@@ -17,8 +18,11 @@ class LoginPage extends Component {
 
     // needs work
     handleLoginSuccess = () => {
-        const {history} = this.props;
-        history.push('/dashboard')
+        const {location, history} = this.props;
+        console.log(location.state)
+        const destination = (location.state || {}).from || '/'
+        console.log(destination)
+        history.push(destination)
     }
 
     handleSubmitJwtAuth = ev => {

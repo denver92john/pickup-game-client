@@ -61,7 +61,7 @@ class DashboardPage extends Component {
 
     render() {
         const {error} = this.context
-        console.log('how many times')
+        //console.log('how many times')
         return (
             <div>
                 {error

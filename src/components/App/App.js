@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Route, Switch} from 'react-router-dom';
 import PrivateRoute from '../Utils/PrivateRoute';
 import PublicOnlyRoute from '../Utils/PublicOnlyRoute';
+import TokenService from '../../services/token-service';
 import Nav from '../Nav/Nav';
 import LandingPage from '../../routes/LandingPage/LandingPage';
 import CreatePage from '../../routes/CreatePage/CreatePage';
@@ -16,15 +17,40 @@ import './App.css';
 
 
 class App extends Component {
-  //componentDidMount() {}
+  state = {
+    hasError: false,
+    loggedIn: false
+  }
+
+  static getDerivedStateFromError(error) {
+    console.error(error)
+    return {hasError: true}
+  }
+
+  /*componentDidMount() {
+    console.log('componentDidMount ran')
+    if(TokenService.hasAuthToken()) {
+      this.setState({loggedIn: true})
+    } else {
+      this.setState({loggedIn: false})
+    }
+  }*/
+
+  setLoggedIn = loggedIn => {
+    //console.log(loggedIn)
+    this.setState({loggedIn: loggedIn})
+  }
 
   render() {
+    console.log('render in app ran')
+    console.log(this.state.loggedIn)
     return (
         <div className="App">
           <header>
             <Nav />
           </header>
           <main className="App_main">
+            {this.state.hasError && <p>There was an error!</p>}
             <Switch>
               <Route 
                 exact
@@ -35,8 +61,9 @@ class App extends Component {
                 path={'/signup'}
                 component={SignupPage}
               />
-              <PublicOnlyRoute 
+              <PublicOnlyRoute
                 path={'/login'}
+                onLogin={this.setLoggedIn}
                 component={LoginPage}
               />
               <PrivateRoute 

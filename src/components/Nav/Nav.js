@@ -5,8 +5,21 @@ import logo from '../../images/PUG sports.png';
 import './Nav.css';
 
 export default class Nav extends Component {
+    state = {
+        loggedIn: false
+    }
+
+    /*componentDidMount() {
+        if(TokenService.hasAuthToken()) {
+            this.setState({loggedIn: true})
+        } else {
+            this.setState({loggedIn: false})
+        }
+    }*/
+
     handleLogoutClick = () => {
         TokenService.clearAuthToken()
+        this.setState({loggedIn: false})
     }
 
     renderLoggedOutLinks() {
@@ -67,6 +80,7 @@ export default class Nav extends Component {
     }
 
     render() {
+        console.log('render in Nav ran')
         return <>
             <nav role="navigation" className="navbar">
                 <div className="logo-div">
