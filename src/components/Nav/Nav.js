@@ -5,8 +5,8 @@ import logo from '../../images/PUG sports.png';
 import './Nav.css';
 
 export default class Nav extends Component {
-    state = {
-        loggedIn: false
+    static defaultProps = {
+        onLogin: () => {}
     }
 
     /*componentDidMount() {
@@ -19,7 +19,7 @@ export default class Nav extends Component {
 
     handleLogoutClick = () => {
         TokenService.clearAuthToken()
-        this.setState({loggedIn: false})
+        this.props.onLogin(false)
     }
 
     renderLoggedOutLinks() {

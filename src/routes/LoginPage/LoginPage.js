@@ -12,15 +12,16 @@ class LoginPage extends Component {
         history: {
             push: () => {},
         },
+        onLogin: () => {},
     }
 
     state = {error: null}
 
     // needs work
     handleLoginSuccess = () => {
-        const {location, history} = this.props;
-        console.log(location.state)
-        const destination = (location.state || {}).from || '/'
+        const {location, history, onLogin} = this.props;
+        onLogin(true)
+        const destination = (location.state || {}).from || '/dashboard'
         console.log(destination)
         history.push(destination)
     }

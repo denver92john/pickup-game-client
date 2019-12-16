@@ -47,7 +47,7 @@ class App extends Component {
     return (
         <div className="App">
           <header>
-            <Nav />
+            <Nav onLogin={this.setLoggedIn} loggedIn={this.state.loggedIn} />
           </header>
           <main className="App_main">
             {this.state.hasError && <p>There was an error!</p>}
