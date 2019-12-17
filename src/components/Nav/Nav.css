@@ -1,10 +1,6 @@
 .navbar {
-    height: 50px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 10;
+    /*height: 50px;*/
+    min-height: 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -16,7 +12,6 @@
 
 .nav-links {
     list-style-type: none;
-    margin-right: 10px;
 }
 
 .nav-links li {

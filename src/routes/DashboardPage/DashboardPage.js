@@ -45,9 +45,9 @@ class DashboardPage extends Component {
         return (
             <>
                 <Hero>
-                    <h1>User Dashboard</h1>
-                    <h2>{user.username}</h2>
-                    <h3>{user.first_name} {user.last_name}</h3>
+                    <h1 className="hero-title">User Dashboard</h1>
+                    <h2 className="hero-title">{user.username}</h2>
+                    <h3 className="hero-title">{user.first_name} {user.last_name}</h3>
                 </Hero>
                 <UserData 
                     user={user} 

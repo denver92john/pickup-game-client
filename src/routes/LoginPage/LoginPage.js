@@ -4,7 +4,7 @@ import TokenService from '../../services/token-service';
 import AuthApiService from '../../services/auth-api-service';
 //import Hero from '../../components/Hero/Hero';
 import Form from '../../components/Form/Form';
-import {Hero, Section} from '../../components/Utils/Utils';
+import {Hero, Section, Label, Button, Input} from '../../components/Utils/Utils';
 
 class LoginPage extends Component {
     static defaultProps = {
@@ -22,7 +22,6 @@ class LoginPage extends Component {
         const {location, history, onLogin} = this.props;
         onLogin(true)
         const destination = (location.state || {}).from || '/dashboard'
-        console.log(destination)
         history.push(destination)
     }
 
@@ -48,30 +47,35 @@ class LoginPage extends Component {
         return (
             <div>
                 <Hero>
-                    <h1>Login</h1>
+                    <h1 className="hero-title">Login</h1>
                 </Hero>
                 <Form onSubmit={this.handleSubmitJwtAuth}>
                     <div className="form-section">
-						<label htmlFor="username-input">*Username: </label>
-						<input type="text" id="username-input" name="username" required />
+                        <Label htmlFor="username-input">Username:</Label>
+                        <Input 
+                            type="text" 
+                            id="username-input" 
+                            name="username" 
+                            required
+                        />
 					</div>
 
 					<div className="form-section">
-						<label htmlFor="password-input">*Password: </label>
-						<input type="password" id="password-input" name="password" required />
+                        <Label htmlFor="password-input">Password:</Label>
+                        <Input 
+                            type="password" 
+                            id="password-input" 
+                            name="password" 
+                            required
+                        />
 					</div>
 
                     <div className='form-buttons'>
-                        <button type="submit">Submit</button>
-					    <button type="reset">Reset</button>
+                        <Button type="submit">Submit</Button>
+                        <Button type="reset">Reset</Button>
                     </div>
                 </Form>
                 <Section>
-                    <div>
-                        <span>Forgot your Password?</span>
-                        {' '}
-                        <span>Reset Password</span>
-                    </div>
                     <div>
                         <span>No Account?</span>
                         {' '}

@@ -4,7 +4,7 @@ import EventApiService from '../../services/event-api-service';
 import EventsContext from '../../contexts/EventsContext';
 import DateTimePicker from 'react-datetime-picker';
 //import moment from 'moment';
-import {Hero, Section} from '../../components/Utils/Utils';
+import {Hero, Section, Label, Button, Input, Textarea, Required} from '../../components/Utils/Utils';
 import Form from '../../components/Form/Form';
 
 
@@ -75,23 +75,31 @@ class CreatePage extends Component {
         return (
             <div className="CreateEvent">
                 <Hero>
-                    <h1>Create New Event</h1>
+                    <h1 className="hero-title">Create New Event</h1>
                 </Hero>
                 <Form onSubmit={this.handleSubmit}>
                     <div className="form-section">
-                        <label htmlFor="game-title-input">*Event Title: </label>
-                        <input type="text" id="game-title-input" name="title" placeholder="bishop park basketball pickup" required />
+                        <Label htmlFor="game-title-input">Title: <Required /></Label>
+                        <Input 
+                            type="text" 
+                            id="game-title-input" 
+                            name="title" 
+                            placeholder="bishop park basketball pickup" 
+                            required
+                        />
                     </div>
 
                     <div className="form-section">
-						<label htmlFor="game-description-input">Event Description: </label>
-						<textarea id="game-description-input" name="description" rows="10"></textarea>
+                        <Label htmlFor="game-description-input">Description:</Label>
+                        <Textarea 
+                            id="game-description-input" name="description" rows="5"
+                        />
 					</div>
 
                     <div className="form-section">
-						<label htmlFor="game-type-input">*Game Type: </label>
-						<select id="game-type-input" name="sport" required>
-							<option value="">Select Sport:</option>
+                        <Label htmlFor="game-type-input">Game Type: <Required /></Label>
+						<select className="select" id="game-type-input" name="sport" required>
+							<option value="">Select Sport</option>
                             {sports.map((sport, i) => (
                                 <option key={i} value={sport}>{sport}</option>
                             ))}
@@ -99,7 +107,7 @@ class CreatePage extends Component {
 					</div>
                     
                     <div className="form-section">
-                        <label htmlFor="game-when-input">*When</label>
+                        <Label htmlFor="game-when-input">When: <Required /></Label>
                         <DateTimePicker 
                             id="game-when-input"
                             name="datetime"
@@ -110,25 +118,30 @@ class CreatePage extends Component {
                     </div>
 
                     <div className="form-section">
-                        <label htmlFor="players-max-input">Max Number of Players: </label>
-                        <input type="number" id="players-max-input" name="max_players" /> 
+                        <Label htmlFor="players-max-input">Max Number of Players:</Label>
+                        <input 
+                            className="number" 
+                            type="number" 
+                            id="players-max-input" 
+                            name="max_players" 
+                            min="1"
+                            max="20"
+                        /> 
                     </div>
 
                     <div className="form-buttons">
-                        <button type="submit">Submit</button>
-                        <button type="reset">Reset</button>
+                        <Button type="submit">Submit</Button>
+                        <Button type="reset">Reset</Button>
                     </div>
                 </Form>
 
                 <Section>
-                    <div>
-                        <p>Have you looked to see if an event like this already exists?</p>
-                        <Link
-                            to='/discover'
-                        >
-                            Discover
-                        </Link>
-                    </div>
+                    <p className="section-sentence">Have you looked to see if an event like this already exists?</p>
+                    <Link
+                        to='/discover'
+                    >
+                        Discover
+                    </Link>
                 </Section>
             </div>
         );

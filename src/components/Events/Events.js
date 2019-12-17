@@ -20,12 +20,12 @@ class Events extends Component {
     render() {
         //const {error} = this.context;
         return (
-            <div className='events'>
+            <>
                 {/*error
                     ? <p>There was an error</p>
                     : this.renderEvents()*/}
                 {this.renderEvents()}
-            </div>
+            </>
         );
     }
 }

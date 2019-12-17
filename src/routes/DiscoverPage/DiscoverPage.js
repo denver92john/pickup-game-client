@@ -67,11 +67,11 @@ class DiscoverPage extends Component {
     }
 
     render() {
-        const {sports} = this.context;
+        //const {sports} = this.context;
         return (
             <div>
                 <Hero>
-                    <h1>Discover New Events</h1>
+                    <h1 className="hero-title">Discover New Events</h1>
                     {/*<Form onSubmit={this.handleSubmit}>
                         <div className="form-section">
                             <label htmlFor="game-type-input">Game Type:</label>
@@ -102,8 +102,8 @@ class DiscoverPage extends Component {
                     </Form>*/}
                 </Hero>
                 <Events events={this.context.events} />
-                <Section>
-                    <p>Not finding the right event for you?</p>
+                <Section className="section-discover">
+                    <p className="section-sentence">Not finding the right event for you?</p>
                     <Link
                         to='/create'
                     >

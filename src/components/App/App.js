@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {Route, Switch} from 'react-router-dom';
 import PrivateRoute from '../Utils/PrivateRoute';
 import PublicOnlyRoute from '../Utils/PublicOnlyRoute';
-import TokenService from '../../services/token-service';
 import Nav from '../Nav/Nav';
 import LandingPage from '../../routes/LandingPage/LandingPage';
 import CreatePage from '../../routes/CreatePage/CreatePage';
@@ -11,7 +10,7 @@ import DiscoverPage from '../../routes/DiscoverPage/DiscoverPage';
 import EventPage from '../../routes/EventPage/EventPage';
 import LoginPage from '../../routes/LoginPage/LoginPage';
 import SignupPage from '../../routes/SignupPage/SignupPage';
-import Footer from '../Footer/Footer';
+//import Footer from '../Footer/Footer';
 //import config from '../../config';
 import './App.css';
 
@@ -42,11 +41,9 @@ class App extends Component {
   }
 
   render() {
-    console.log('render in app ran')
-    console.log(this.state.loggedIn)
     return (
         <div className="App">
-          <header>
+          <header className="App_header">
             <Nav onLogin={this.setLoggedIn} loggedIn={this.state.loggedIn} />
           </header>
           <main className="App_main">
@@ -84,7 +81,6 @@ class App extends Component {
               />
             </Switch>
           </main>
-          <Footer />
         </div>
     );
   }

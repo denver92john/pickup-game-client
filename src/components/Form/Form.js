@@ -1,13 +1,13 @@
 import React from 'react';
 import './Form.css';
 
-function Form(props) {
-    const {className, ...otherProps} = props;
+function Form({className, ...props}) {
+    const classes = [
+        "pickup-game-form",
+        className
+    ].join(' ')
     return (
-        <form
-            className={["pickup-game-form", className].join(" ")}
-            {...otherProps}
-        />
+        <form className={classes} {...props}/>
     );
 }
 

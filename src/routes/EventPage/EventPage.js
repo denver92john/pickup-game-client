@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import moment from 'moment';
 import EventContext from '../../contexts/EventContext';
 import EventApiService from '../../services/event-api-service';
+import {Hero, Button, Section} from '../../components/Utils/Utils';
 //import {checkPlayer} from '../../event-helper';
-//import './Event.css';
+import './EventPage.css';
 
 export default class EventPage extends Component {
     static defaultProps = {
@@ -32,12 +33,10 @@ export default class EventPage extends Component {
         console.log('onPlay ran')
         this.context.clearError()
         const {event, players} = this.context;
-        //console.log(event)
         const newPlay = {
             max_players: event.max_players,
             number_of_players: players.length
         }
-        console.log(newPlay)
         EventApiService.play(newPlay, event.id)
             .then(res => {
                 EventApiService.getPlayers(event.id)
@@ -67,83 +66,116 @@ export default class EventPage extends Component {
 
     ifPlaying = (players = [], player_id) => {
         let found = players.find(player => player.id === player_id)
-        console.log(found)
         return found;
     }
 
     renderPlayButton() {
         return (
-            <button
+            <Button
                 type="button"
                 onClick={this.onPlay}
             >
                 Play
-            </button>
+            </Button>
         );
     }
 
     renderNotPlayButton() {
         return (
-            <button
+            <Button
                 type="button"
                 onClick={this.onNotPlay}
             >
                 Leave Game
-            </button>
+            </Button>
         );
     }
 
-    /*renderEvent = () => {
+    renderEvent() {
         const {event, players} = this.context;
-        let currentDate = moment(event.datetime).format('MMM ddd DD YYYY');
-        console.log(players)
-        return (
-            <section>
-                <h2>{event.title}</h2>
-                <p>{event.sport}</p>
-                <p>{currentDate}</p>
-                <p>{event.description}</p>
-                <ul>
-                    {players.map(player =>
-                        <li key={player.id}>
-                            {player.username}
-                        </li>
-                    )}
-                </ul>
-            </section>
-        );
-    }*/
+        return <>
+            <Hero>
+                <h1 className="hero-title">{event.title}</h1>
+                <p className="hero-text">{event.description}</p>
+            </Hero>
+            <div className="event-data">
+                <EventTable event={event} />
+            </div>
+            <div className="event-buttons">
+                {this.ifPlaying(players, event.player_id)
+                    ? this.renderNotPlayButton()
+                    : this.renderPlayButton()}
+            </div>
+            <EventPlayers players={players} />
+        </>
+    }
 
     render() {
-        const {event, players} = this.context;
-        let currentDate = moment(event.datetime).format('MMM ddd DD YYYY');
+        const {error, event} = this.context;
+        let content;
+        if(error) {
+            content = <p>There was an error</p>
+        } else if(!event.id) {
+            content = <p>Loading...</p>
+        } else {
+            content = this.renderEvent()
+        }
         
         return (
             <section>
-                <h2>{event.title}</h2>
-                <p>{event.sport}</p>
-                <p>{currentDate}</p>
-                <p>{event.description}</p>
-                <div className="event-buttons">
-                    {this.ifPlaying(players, event.player_id)
-                        ? this.renderNotPlayButton()
-                        : this.renderPlayButton()}
-                </div>
-                <EventPlayers players={players} />
+                {content}
             </section>
         );
     }
 }
 
+function EventTable(event) {
+    const {datetime, host, max_players, number_of_players, sport} = event.event
+    let dateAndTime = moment(datetime).format('dddd, MMM DD YYYY');
+
+    return(
+        <table className="event-table">
+            <caption>Additional info about the event</caption>
+            <tbody>
+                <tr>
+                    <th scope="row">Sport</th>
+                    <td>{sport}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Date and Time</th>
+                    <td>{dateAndTime}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Host</th>
+                    <td>{host.username}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Number of Players</th>
+                    <td>{number_of_players}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Max Number of Players</th>
+                    <td>{max_players}</td>
+                </tr>
+            </tbody>
+        </table>
+    );
+}
 
 function EventPlayers({players = []}) {
     return (
-        <ul>
-            {players.map(player =>
-                <li key={player.id}>
-                    <p>{player.username}</p>
-                </li>
-            )}
-        </ul>
+        <Section className="section-event-page">
+            <ul>
+                <header className="section-heading">
+                    <h2>Players</h2>
+                </header>
+                {players.map(player =>
+                    <li key={player.id}>
+                        <p>{player.username}</p>
+                    </li>
+                )}
+            </ul>
+        </Section>
+        
     );
 }

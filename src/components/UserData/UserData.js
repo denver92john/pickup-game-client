@@ -7,7 +7,7 @@ class UserData extends Component {
 
     render() {
         return (
-            <section>
+            <section className="user-data">
                 <Tabs>
                     <TabList>
                         <Tab onClick={this.props.onUserEvents}>My Events</Tab>

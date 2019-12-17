@@ -1,3 +1,21 @@
-.event-item {
-    background-color: burlywood;
+.event-data {
+    max-width: 450px;
+    margin: auto;
+    padding: 20px 0;
+}
+
+.event-table {
+    text-align: left;
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+th, td {
+    padding: 5px;
+    border: 1px solid black;
+}
+
+.event-players {
+    
 }

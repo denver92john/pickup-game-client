@@ -11,6 +11,18 @@ export function Input({className, ...props}) {
     );
 }
 
+export function Textarea({className, ...props}) {
+    return (
+        <textarea className={['textarea', className].join(' ')} {...props} />
+    );
+}
+
+export function Label({className, ...props}) {
+    return (
+        <label className={['label', className].join(' ')} {...props} />
+    );
+}
+
 export function Hero({className, ...props}) {
     const classes = [
         'hero',
@@ -28,5 +40,13 @@ export function Section({className, ...props}) {
     ].join(' ')
     return (
         <section className={classes} {...props} />
+    );
+}
+
+export function Required({className, ...props}) {
+    return (
+        <span className={['Required', className].join(' ')} {...props}>
+            &#42;
+        </span>
     );
 }

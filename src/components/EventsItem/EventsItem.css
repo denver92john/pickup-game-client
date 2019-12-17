@@ -1,0 +1,28 @@
+.event-item {
+    margin-bottom: 5px;
+    background-color: white;
+    padding: 10px;
+    text-align: left;
+}
+
+.event-item-header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+
+.event-item-footer {
+    padding-bottom: 5px;
+}
+
+/*.event-item-title {
+    display: inline-block;
+}
+
+.event-item-sport {
+    display: inline-block;
+}*/
+
+.event-item-datetime {
+
+}

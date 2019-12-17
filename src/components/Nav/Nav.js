@@ -80,7 +80,6 @@ export default class Nav extends Component {
     }
 
     render() {
-        console.log('render in Nav ran')
         return <>
             <nav role="navigation" className="navbar">
                 <div className="logo-div">
@@ -98,41 +97,3 @@ export default class Nav extends Component {
         
     }
 }
-
-/*function Nav() {
-    return (
-        <nav role="navigation" className="navbar">
-            <div className="logo-div">
-                <Link
-                    to='/'
-                >
-                    <img src={logo} alt='pickup game logo' className='logo' />
-                </Link>
-            </div>
-
-            <ul className="nav-links">
-                <li>
-                    <Link
-                        to='/dashboard'
-                    >
-                        Dashboard
-                    </Link>
-                </li>
-                <li>
-                    <Link
-                        to='/signup'
-                    >
-                        Signup
-                    </Link>
-                </li>
-                <li>
-                    <Link
-                        to='/login'
-                    >
-                        Login
-                    </Link>
-                </li>
-            </ul>
-        </nav>
-    );
-}*/
