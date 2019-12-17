@@ -165,10 +165,10 @@ function EventTable(event) {
 function EventPlayers({players = []}) {
     return (
         <Section className="section-event-page">
-            <ul>
-                <header className="section-heading">
-                    <h2>Players</h2>
-                </header>
+            <header className="section-heading">
+                <h2>Players</h2>
+            </header>
+            <ul className="event-players">
                 {players.map(player =>
                     <li key={player.id}>
                         <p>{player.username}</p>

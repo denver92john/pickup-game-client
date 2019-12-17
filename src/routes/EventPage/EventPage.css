@@ -17,5 +17,8 @@ th, td {
 }
 
 .event-players {
-    
+    list-style-type: none;
+}
+.event-players li {
+    margin-bottom: 5px;
 }
