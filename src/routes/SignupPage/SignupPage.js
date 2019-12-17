@@ -13,6 +13,8 @@ class SignupPage extends Component {
 
 	state = {error: null}
 
+	validatePassword 
+
 	handleRegistrationSuccess = user => {
 		const {history} = this.props
 		history.push('/login')
@@ -20,18 +22,21 @@ class SignupPage extends Component {
 
 	handleSubmit = ev => {
 		ev.preventDefault()
-		const {username, password, first_name, last_name} = ev.target;
+		this.setState({error: null})
+		const {username, password, reenter_password, first_name, last_name} = ev.target;
 		const newUser = {
 			username: username.value,
 			password: password.value,
+			reenter_password: reenter_password.value,
 			first_name: first_name.value,
 			last_name: last_name.value,
 		}
-		this.setState({error: null})
+		
 		AuthApiService.postUser(newUser)
 			.then(user => {
 				username.value = ''
 				password.value = ''
+				reenter_password.value = ''
 				first_name.value = ''
 				last_name.value = ''
 				this.handleRegistrationSuccess()
@@ -42,6 +47,7 @@ class SignupPage extends Component {
 	}
 
     render() {
+		const {error} = this.state;
         return (
             <div>
                 <Hero>
@@ -71,6 +77,16 @@ class SignupPage extends Component {
 					</div>
 
 					<div className="form-section">
+						<Label htmlFor="reenter-password-input">Reenter Password: <Required /></Label>
+						<Input 
+							type="password"
+							id="reenter-password-input"
+							name="reenter_password"
+							required
+						/>
+					</div>
+
+					<div className="form-section">
 						<Label htmlFor="first-name-input">First Name:</Label>
 						<Input 
 							type="text" 
@@ -86,6 +102,10 @@ class SignupPage extends Component {
 							id="last-name-input" 
 							name="last_name"
 						/>
+					</div>
+
+					<div role="alert">
+						{error && <p className="red">{error}</p>}
 					</div>
 					
                     <div className='form-buttons'>

@@ -40,10 +40,11 @@ class LoginPage extends Component {
                 TokenService.saveAuthToken(res.authToken)
                 this.handleLoginSuccess()
             })
-            .catch(error => this.setState({error}))
+            .catch(res => this.setState({error: res.error}))
     }
 
     render() {
+        const {error} = this.state;
         return (
             <div>
                 <Hero>
@@ -69,6 +70,10 @@ class LoginPage extends Component {
                             required
                         />
 					</div>
+
+                    <div role="alert">
+                        {error && <p className="red">{error}</p>}
+                    </div>
 
                     <div className='form-buttons'>
                         <Button type="submit">Submit</Button>
