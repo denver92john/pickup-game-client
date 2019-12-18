@@ -6,7 +6,8 @@ import './EventsItem.css';
 export default class EventsItem extends Component {
     render() {
         const {event} = this.props;
-        let datetime = moment(event.datetime).format('ddd, MMM-DD-YYYY h:mm a');
+        const datetime = moment(event.datetime).format('ddd, MMM DD, YYYY @ h:mm A');
+        
         return (
             <li className="event-item">
                 <Link to={`/event/${event.id}`} className="events-item">

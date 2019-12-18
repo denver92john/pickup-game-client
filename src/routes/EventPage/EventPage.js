@@ -131,7 +131,8 @@ export default class EventPage extends Component {
 
 function EventTable(event) {
     const {datetime, host, max_players, number_of_players, sport} = event.event
-    let dateAndTime = moment(datetime).format('dddd, MMM DD YYYY');
+    console.log(datetime)
+    let dateAndTime = moment(datetime).format('ddd, MM/DD/YYYY @ h:mm A');
 
     return(
         <table className="event-table">

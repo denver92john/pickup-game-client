@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import EventApiService from '../../services/event-api-service';
 import EventsContext from '../../contexts/EventsContext';
 import DateTimePicker from 'react-datetime-picker';
-//import moment from 'moment';
+import moment from 'moment';
 import {Hero, Section, Label, Button, Input, Textarea, Required} from '../../components/Utils/Utils';
 import Form from '../../components/Form/Form';
 
@@ -17,7 +17,7 @@ class CreatePage extends Component {
 
     state = {
         //date: moment().format("YYYY-MM-DD HH:mm:ssZ")
-        date: new Date(),
+        datetime: new Date(),
     }
 
     static contextType = EventsContext;
@@ -32,8 +32,8 @@ class CreatePage extends Component {
             .catch(this.context.setError)
     }
 
-    onChange = date => {
-        this.setState({date})
+    onChange = datetime => {
+        this.setState({datetime})
     }
 
     handleCreateSuccess = () => {
@@ -44,15 +44,16 @@ class CreatePage extends Component {
     handleSubmit = ev => {
         ev.preventDefault();
         this.context.clearError()
-        const {title, description, sport, datetime, max_players} = ev.target;
+        const {title, description, sport, max_players} = ev.target;
+        const {datetime} = this.state;
         const newEvent = {
             title: title.value,
             description: description.value,
             sport: sport.value,
-            datetime: datetime.value,
+            datetime: datetime.toISOString(),
             max_players: max_players.value,
         }
-
+        
         EventApiService.postEvent(newEvent)
             .then(() => {
                 title.value = '';
@@ -71,7 +72,7 @@ class CreatePage extends Component {
     }
 
     render() {
-        const {sports} = this.context;
+        const {sports, error} = this.context;
         return (
             <div className="CreateEvent">
                 <Hero>
@@ -113,7 +114,7 @@ class CreatePage extends Component {
                             name="datetime"
                             format={"M/d/yy h:mma"}
                             onChange={this.onChange}
-                            value={this.state.date}
+                            value={this.state.datetime}
                         />
                     </div>
 
@@ -127,6 +128,10 @@ class CreatePage extends Component {
                             min="1"
                             max="20"
                         /> 
+                    </div>
+
+                    <div role="alert">
+                        {error && <p className="red">{error}</p>}
                     </div>
 
                     <div className="form-buttons">
