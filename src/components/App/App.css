@@ -3,7 +3,7 @@
 }
 
 .App_header {
-  background-color: #808080;
+  background-color: var(--color1);
   padding: 5px 10px;
   position: fixed;
   top: 0;
@@ -13,8 +13,13 @@
 }
 
 .App_main {
-  margin-top: 60px;
-  margin: 60px 10px 10px 10px;
+  margin: 60px 0 60px 0;
+  padding: 0 10px;
+}
+
+.App_footer {
+  background-color: var(--color1);
+  height: 5vh;
 }
 
 /*nav,
@@ -26,11 +31,6 @@ footer {
 header {
   padding: 20px 10px;
 }*/
-
-a {
-  text-decoration: none;
-  color: blue;
-}
 
 .red {
   color: red;

@@ -18,12 +18,8 @@ class Events extends Component {
     }
 
     render() {
-        //const {error} = this.context;
         return (
             <>
-                {/*error
-                    ? <p>There was an error</p>
-                    : this.renderEvents()*/}
                 {this.renderEvents()}
             </>
         );

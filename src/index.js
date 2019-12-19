@@ -5,6 +5,7 @@ import {UserProvider} from './contexts/UserContext';
 import {EventsProvider} from './contexts/EventsContext';
 import {EventProvider} from './contexts/EventContext';
 import App from './components/App/App';
+//import './fonts/'
 import './index.css';
 
 ReactDOM.render(

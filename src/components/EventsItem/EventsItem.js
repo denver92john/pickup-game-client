@@ -16,7 +16,7 @@ export default class EventsItem extends Component {
                         <p className="event-item-sport">{event.sport}</p>
                     </header>
                     <footer className="event-item-footer">
-                        <p className="event-item-datetime">When: {datetime}</p>
+                        <p className="event-item-datetime"><span className="black">When:</span> {datetime}</p>
                     </footer>
                 </Link>
             </li>

@@ -74,6 +74,7 @@ export default class EventPage extends Component {
             <Button
                 type="button"
                 onClick={this.onPlay}
+                className="submit-button"
             >
                 Play
             </Button>
@@ -85,6 +86,7 @@ export default class EventPage extends Component {
             <Button
                 type="button"
                 onClick={this.onNotPlay}
+                className="reset-button"
             >
                 Leave Game
             </Button>
@@ -96,7 +98,7 @@ export default class EventPage extends Component {
         return <>
             <Hero>
                 <h1 className="hero-title">{event.title}</h1>
-                <p className="hero-text">{event.description}</p>
+                <p className="hero-description">{event.description}</p>
             </Hero>
             <div className="event-data">
                 <EventTable event={event} />
@@ -131,12 +133,11 @@ export default class EventPage extends Component {
 
 function EventTable(event) {
     const {datetime, host, max_players, number_of_players, sport} = event.event
-    console.log(datetime)
     let dateAndTime = moment(datetime).format('ddd, MM/DD/YYYY @ h:mm A');
 
     return(
         <table className="event-table">
-            <caption>Additional info about the event</caption>
+            <caption className="table-caption">Additional info about the event</caption>
             <tbody>
                 <tr>
                     <th scope="row">Sport</th>
@@ -165,7 +166,7 @@ function EventTable(event) {
 
 function EventPlayers({players = []}) {
     return (
-        <Section className="section-event-page">
+        <Section>
             <header className="section-heading">
                 <h2>Players</h2>
             </header>

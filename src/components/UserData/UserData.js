@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
 import Events from '../Events/Events';
+import 'react-tabs/style/react-tabs.css';
 import './UserData.css';
 
 class UserData extends Component {

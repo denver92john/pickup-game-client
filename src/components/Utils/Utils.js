@@ -45,7 +45,7 @@ export function Section({className, ...props}) {
 
 export function Required({className, ...props}) {
     return (
-        <span className={['Required', className].join(' ')} {...props}>
+        <span className={['required', className].join(' ')} {...props}>
             &#42;
         </span>
     );

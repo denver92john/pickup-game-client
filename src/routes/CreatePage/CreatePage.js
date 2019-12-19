@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom';
 import EventApiService from '../../services/event-api-service';
 import EventsContext from '../../contexts/EventsContext';
 import DateTimePicker from 'react-datetime-picker';
-import moment from 'moment';
 import {Hero, Section, Label, Button, Input, Textarea, Required} from '../../components/Utils/Utils';
 import Form from '../../components/Form/Form';
 
@@ -16,7 +15,6 @@ class CreatePage extends Component {
     }
 
     state = {
-        //date: moment().format("YYYY-MM-DD HH:mm:ssZ")
         datetime: new Date(),
     }
 
@@ -73,6 +71,7 @@ class CreatePage extends Component {
 
     render() {
         const {sports, error} = this.context;
+        console.log('how many times?')
         return (
             <div className="CreateEvent">
                 <Hero>
@@ -85,7 +84,7 @@ class CreatePage extends Component {
                             type="text" 
                             id="game-title-input" 
                             name="title" 
-                            placeholder="bishop park basketball pickup" 
+                            placeholder="My Event" 
                             required
                         />
                     </div>
@@ -135,8 +134,8 @@ class CreatePage extends Component {
                     </div>
 
                     <div className="form-buttons">
-                        <Button type="submit">Submit</Button>
-                        <Button type="reset">Reset</Button>
+                        <Button type="submit" className="submit-button">Submit</Button>
+                        <Button type="reset" className="reset-button">Reset</Button>
                     </div>
                 </Form>
 

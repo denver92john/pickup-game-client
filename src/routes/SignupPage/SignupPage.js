@@ -109,8 +109,8 @@ class SignupPage extends Component {
 					</div>
 					
                     <div className='form-buttons'>
-						<Button type="submit">Submit</Button>
-						<Button type="reset">Reset</Button>
+						<Button type="submit" className="submit-button">Submit</Button>
+						<Button type="reset" className="reset-button">Reset</Button>
                     </div>
                 </Form>
                 <Section>

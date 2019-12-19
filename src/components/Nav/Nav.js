@@ -27,6 +27,7 @@ export default class Nav extends Component {
             <ul className="nav-links">
                 <li>
                     <Link
+                        className="nav-link"
                         to='/signup'
                     >
                         Signup
@@ -34,6 +35,7 @@ export default class Nav extends Component {
                 </li>
                 <li>
                     <Link
+                        className="nav-link"
                         to='/login'
                     >
                         Login
@@ -48,6 +50,7 @@ export default class Nav extends Component {
             <ul className="nav-links">
                 <li>
                     <Link
+                        className="nav-link"
                         to='/dashboard'
                     >
                         Dashboard
@@ -55,6 +58,7 @@ export default class Nav extends Component {
                 </li>
                 <li>
                     <Link
+                        className="nav-link"
                         to='/create'
                     >
                         Create
@@ -62,6 +66,7 @@ export default class Nav extends Component {
                 </li>
                 <li>
                     <Link
+                        className="nav-link"
                         to='/discover'
                     >
                         Discover
@@ -69,6 +74,7 @@ export default class Nav extends Component {
                 </li>
                 <li>
                     <Link
+                        className="nav-link"
                         onClick={this.handleLogoutClick}
                         to='/'
                     >

@@ -1,19 +1,80 @@
-* {
+:root {
+  --basis: 1em;
+  --stepUp4: calc(var(--stepUp3) * 1.143);
+  --stepUp3: calc(var(--stepUp2) * 1.167);
+  --stepUp2: calc(var(--stepUp1) * 1.2);
+  --stepUp1: calc(var(--basis) * 1.25);
+  --stepDown1: calc(var(--basis) * 0.875);
+  --stepDown2: calc(var(--stepDown1) * 0.857);
+  --stepDown3: calc(var(--stepDown2) * 0.833);
+  --stepDown4: calc(var(--stepDown3) * 0.8);
+
+  --color1: #1844F2;
+  --color2: #FA4616;
+  --color3: #00AD7A;
+  --color4: #16FAB6;
+  --color5: #0021A5;
+  --color6: #FF5D30;
+  --color7: #001259;
+}
+
+/*
+  font-size: var(--basis);
+  border: 2px solid var(--color3);
+*/
+
+@font-face {
+  font-family: "SF Sports Night";
+  src: local("SF Sports Night"), url(./fonts/sf-sports-night.ns.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Open Sans";
+  src: local("Open Sans"), url(./fonts/Open_Sans/OpenSans-Regular.ttf) format("truetype");
+}
+
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
   padding: 0;
   margin: 0;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: var(--basis);
   line-height: 1.35;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+h1 {
+  font-family: "SF Sports Night";
+  font-size: var(--stepUp4);
+  color: var(--color1);
+}
+h2 {
+  font-size: var(--stepUp3);
+}
+h3 {
+  font-size: var(--stepUp2);
+}
+h4 {
+  font-size: var(--stepUp1);
+}
+
+a {
+  text-decoration: none;
+  color: var(--color6);
 }

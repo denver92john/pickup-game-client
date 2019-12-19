@@ -1,6 +1,13 @@
 .event-item {
+    width: 100%;
+    min-width: 280px;
+    max-width: 400px;
+    margin: auto;
     margin-bottom: 5px;
     background-color: white;
+    color: black;
+    border: 1px solid var(--color1);
+    border-radius: .25em;
     padding: 10px;
     text-align: left;
 }
@@ -15,14 +22,16 @@
     padding-bottom: 5px;
 }
 
-/*.event-item-title {
-    display: inline-block;
+.event-item-title,
+.black {
+    color: black;
+}
+.event-item-sport {
+    color: var(--color1)
 }
 
-.event-item-sport {
-    display: inline-block;
-}*/
-
-.event-item-datetime {
-
+@media (min-width: 680px) {
+    .event-item {
+        flex: 1 1 320px;
+    }
 }

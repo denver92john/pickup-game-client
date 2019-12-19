@@ -1,13 +1,15 @@
 .navbar {
     /*height: 50px;*/
     min-height: 40px;
+    max-width: 650px;
+    margin: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .logo {
-    width: 30px;
+    width: 60px;
 }
 
 .nav-links {
@@ -16,5 +18,26 @@
 
 .nav-links li {
     display: inline-block;
-    margin-left: 15px;
+    margin-left: 5px;
+}
+
+.nav-link {
+    color: var(--color6);
+    font-size: var(--basis);
+    padding: 5px;
+}
+.nav-link:active {
+    background-color: var(--color6);
+    color: var(--color1)
+}
+.nav-link:hover,
+.nav-link:focus {
+    border-bottom: 1px solid var(--color6);
+    outline: none;
+}
+
+@media (min-width: 440px) {
+    .navbar {
+        max-width: 1230px;
+    }
 }

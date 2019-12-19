@@ -10,7 +10,7 @@ import DiscoverPage from '../../routes/DiscoverPage/DiscoverPage';
 import EventPage from '../../routes/EventPage/EventPage';
 import LoginPage from '../../routes/LoginPage/LoginPage';
 import SignupPage from '../../routes/SignupPage/SignupPage';
-//import Footer from '../Footer/Footer';
+import Footer from '../Footer/Footer';
 //import config from '../../config';
 import './App.css';
 
@@ -81,6 +81,7 @@ class App extends Component {
               />
             </Switch>
           </main>
+          <Footer />
         </div>
     );
   }

@@ -1,8 +1,18 @@
 .events-list {
-    max-width: 450px;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
     list-style-type: none;
-    background-color: grey;
+    background-color: var(--color6);
     min-height: 100px;
     padding: 5px;
     margin: auto;
+}
+
+@media (min-width: 580px) {
+    .events-list {
+        width: 100%;
+        max-width: 1230px;
+        flex-flow: row wrap;
+    }
 }
