@@ -9,6 +9,14 @@ export default class Nav extends Component {
         onLogin: () => {}
     }
 
+    state = {
+        isOpen: false
+    }
+
+    toggleMenu = () => {
+        this.setState({isOpen: !this.state.isOpen})
+    }
+
     /*componentDidMount() {
         if(TokenService.hasAuthToken()) {
             this.setState({loggedIn: true})
