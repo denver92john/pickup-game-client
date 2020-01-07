@@ -71,7 +71,6 @@ class CreatePage extends Component {
 
     render() {
         const {sports, error} = this.context;
-        console.log('how many times?')
         return (
             <div className="CreateEvent">
                 <Hero>

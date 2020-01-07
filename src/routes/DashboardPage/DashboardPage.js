@@ -24,7 +24,6 @@ class DashboardPage extends Component {
         this.context.clearError()
         this.context.clearEvents()
         const user_id = this.context.user.id;
-        //console.log(user_id)
         UserApiService.getUserEvents(user_id)
             .then(this.context.setEvents)
             .catch(this.context.setError)
@@ -50,7 +49,6 @@ class DashboardPage extends Component {
                     <h3 className="hero-title">{user.first_name} {user.last_name}</h3>
                 </Hero>
                 <UserData 
-                    user={user} 
                     events={events}
                     onUserEvents={this.handleUserEvents}
                     onHostedEvents={this.handleHostedEvents}
@@ -61,7 +59,6 @@ class DashboardPage extends Component {
 
     render() {
         const {error} = this.context
-        //console.log('how many times')
         return (
             <div>
                 {error

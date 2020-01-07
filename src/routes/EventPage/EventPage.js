@@ -3,7 +3,6 @@ import moment from 'moment';
 import EventContext from '../../contexts/EventContext';
 import EventApiService from '../../services/event-api-service';
 import {Hero, Button, Section} from '../../components/Utils/Utils';
-//import {checkPlayer} from '../../event-helper';
 import './EventPage.css';
 
 export default class EventPage extends Component {
@@ -30,7 +29,6 @@ export default class EventPage extends Component {
 
     onPlay = ev => {
         ev.preventDefault()
-        console.log('onPlay ran')
         this.context.clearError()
         const {event, players} = this.context;
         const newPlay = {
@@ -50,7 +48,6 @@ export default class EventPage extends Component {
 
     onNotPlay = ev => {
         ev.preventDefault()
-        console.log('onNotPlay ran')
         this.context.clearError()
         const {event} = this.context;
         EventApiService.deletePlay(event.id)

@@ -11,7 +11,6 @@ import EventPage from '../../routes/EventPage/EventPage';
 import LoginPage from '../../routes/LoginPage/LoginPage';
 import SignupPage from '../../routes/SignupPage/SignupPage';
 import Footer from '../Footer/Footer';
-//import config from '../../config';
 import './App.css';
 
 
@@ -26,17 +25,7 @@ class App extends Component {
     return {hasError: true}
   }
 
-  /*componentDidMount() {
-    console.log('componentDidMount ran')
-    if(TokenService.hasAuthToken()) {
-      this.setState({loggedIn: true})
-    } else {
-      this.setState({loggedIn: false})
-    }
-  }*/
-
   setLoggedIn = loggedIn => {
-    //console.log(loggedIn)
     this.setState({loggedIn: loggedIn})
   }
 

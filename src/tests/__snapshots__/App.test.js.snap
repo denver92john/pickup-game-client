@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App component renders UI as expected 1`] = `
+<div
+  className="App"
+>
+  <header
+    className="App_header"
+  >
+    <nav
+      className="navbar"
+      role="navigation"
+    >
+      <div
+        className="logo-div"
+      >
+        <a
+          href="/"
+          onClick={[Function]}
+        >
+          <img
+            alt="pickup game logo"
+            className="logo"
+            src="PUG sports.png"
+          />
+        </a>
+      </div>
+      <ul
+        className="nav-links"
+      >
+        <li>
+          <a
+            className="nav-link"
+            href="/signup"
+            onClick={[Function]}
+          >
+            Signup
+          </a>
+        </li>
+        <li>
+          <a
+            className="nav-link"
+            href="/login"
+            onClick={[Function]}
+          >
+            Login
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <main
+    className="App_main"
+  >
+    <div>
+      <header
+        className="hero "
+      >
+        <h1
+          className="hero-title"
+        >
+          PickUp Game
+        </h1>
+        <h3
+          className="hero-title"
+        >
+          Find Your Game
+        </h3>
+        <p
+          className="hero-text"
+        >
+          PickUp Game, otherwise known as PUG Sports, provides you the ability to find and participate in local pickup games from a variety of different sporting events. Sign up for an event with your friends, meet some new friends, and even try out a new sport.
+        </p>
+      </header>
+      <section
+        className="section section-landing-page"
+      >
+        <header
+          className="section-heading"
+        >
+          <h2>
+            Finding a local pickup game
+          </h2>
+        </header>
+        <p
+          className="section-sentence"
+        >
+          Looking for people to play in local pickup games?
+        </p>
+        <p
+          className="section-sentence"
+        >
+          PickUp Game connects you with others looking to play.
+        </p>
+      </section>
+      <section
+        className="section section-landing-page"
+      >
+        <header
+          className="section-heading"
+        >
+          <h2>
+            Creating a local pickup game
+          </h2>
+        </header>
+        <p
+          className="section-sentence"
+        >
+          If you start a game, others will join.
+        </p>
+      </section>
+    </div>
+  </main>
+  <footer
+    className="App_footer"
+  />
+</div>
+`;

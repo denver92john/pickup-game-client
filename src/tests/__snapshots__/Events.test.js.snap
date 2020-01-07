@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Events component renders UI as expected 1`] = `
+<ul
+  className="events-list"
+>
+  <li
+    className="event-item"
+  >
+    <a
+      className="events-item"
+      href="/event/1"
+      onClick={[Function]}
+    >
+      <header
+        className="event-item-header"
+      >
+        <h4
+          className="event-item-title"
+        >
+          Turkey Bowl
+        </h4>
+        <p
+          className="event-item-sport"
+        >
+          football
+        </p>
+      </header>
+      <footer
+        className="event-item-footer"
+      >
+        <p
+          className="event-item-datetime"
+        >
+          <span
+            className="black"
+          >
+            When:
+          </span>
+           
+          Fri, Nov 15, 2019 @ 11:20 AM
+        </p>
+      </footer>
+    </a>
+  </li>
+  <li
+    className="event-item"
+  >
+    <a
+      className="events-item"
+      href="/event/2"
+      onClick={[Function]}
+    >
+      <header
+        className="event-item-header"
+      >
+        <h4
+          className="event-item-title"
+        >
+          Championship Hockey Game
+        </h4>
+        <p
+          className="event-item-sport"
+        >
+          hockey
+        </p>
+      </header>
+      <footer
+        className="event-item-footer"
+      >
+        <p
+          className="event-item-datetime"
+        >
+          <span
+            className="black"
+          >
+            When:
+          </span>
+           
+          Fri, Nov 15, 2019 @ 11:20 AM
+        </p>
+      </footer>
+    </a>
+  </li>
+</ul>
+`;
