@@ -17,17 +17,9 @@ export default class Nav extends Component {
         this.setState({isOpen: !this.state.isOpen})
     }
 
-    /*componentDidMount() {
-        if(TokenService.hasAuthToken()) {
-            this.setState({loggedIn: true})
-        } else {
-            this.setState({loggedIn: false})
-        }
-    }*/
-
     handleLogoutClick = () => {
         TokenService.clearAuthToken()
-        this.props.onLogin(false)
+        this.props.onLogin(false);
     }
 
     renderLoggedOutLinks() {

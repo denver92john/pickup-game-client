@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import TokenService from '../../services/token-service';
 import AuthApiService from '../../services/auth-api-service';
-//import Hero from '../../components/Hero/Hero';
 import Form from '../../components/Form/Form';
 import {Hero, Section, Label, Button, Input} from '../../components/Utils/Utils';
 
@@ -17,7 +16,6 @@ class LoginPage extends Component {
 
     state = {error: null}
 
-    // needs work
     handleLoginSuccess = () => {
         const {location, history, onLogin} = this.props;
         onLogin(true)

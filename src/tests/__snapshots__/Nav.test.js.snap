@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Nav component renders UI as expected 1`] = `
+<nav
+  className="navbar"
+  role="navigation"
+>
+  <div
+    className="logo-div"
+  >
+    <a
+      href="/"
+      onClick={[Function]}
+    >
+      <img
+        alt="pickup game logo"
+        className="logo"
+        src="PUG sports.png"
+      />
+    </a>
+  </div>
+  <ul
+    className="nav-links"
+  >
+    <li>
+      <a
+        className="nav-link"
+        href="/signup"
+        onClick={[Function]}
+      >
+        Signup
+      </a>
+    </li>
+    <li>
+      <a
+        className="nav-link"
+        href="/login"
+        onClick={[Function]}
+      >
+        Login
+      </a>
+    </li>
+  </ul>
+</nav>
+`;
