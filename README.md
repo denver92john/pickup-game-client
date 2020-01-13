@@ -9,6 +9,7 @@ PickUp Game "PUG Sports" is an app that provides users the ability to find local
 The user dashboard shows the username and the user's first and last name.
 There is then a 'My Events' tab that'll show all the events that you've signed up to play in.
 There is also a 'Hosted Events' tab that shows the Events that you created and are hosting.
+
 ![Dashboard View](src/images/dashboard-view.png)
 
 ### Create
@@ -16,6 +17,7 @@ The create form is how you create and host a new event.
 
 ### Discover
 The discover page contains a list of all the available events.
+
 ![Discover View](src/images/discover-view.png)
 
 ## Dependencies
@@ -34,3 +36,6 @@ Used in the create event page to create a component that selects both a date and
 
 ## Technologies Used
 *   React
+
+## API
+Here is the [repo](https://github.com/denver92john/pickup-game-api) for the API.
